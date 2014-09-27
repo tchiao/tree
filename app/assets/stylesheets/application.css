@@ -1,0 +1,95 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+body {
+	margin-left: 20px;
+	background-color:#a9b9c0;
+	font-family:Cambria;
+}
+
+.header, h1 > a, h1 > a:hover {
+	color:#e3e4e4;
+	text-decoration:none;
+}
+
+h2 {
+	color:#29456b;
+}
+
+a {
+	color:#14719c;
+	text-decoration:none;
+}
+
+a:hover {
+	color:#29456b;
+}
+
+.entry_header {
+	margin:0 auto;
+	width:50%;
+	margin-bottom: 20px;
+}
+
+.all_entries {
+	margin:0 auto;
+	background-color:#e3e4e4;
+	color:#29456b;
+	width:50%;
+	padding:10px 20px 10px 20px;
+	border-radius:30px;
+	margin-bottom:15px;
+}
+
+.one_entry {
+	background-color:#e3e4e4;
+	color:#29456b;
+	width:75%;
+	padding:10px 20px 20px 20px;
+	border-radius:30px;
+
+}
+
+.categories {
+	background-color:#e3e4e4;
+	color:#29456b;
+	width:23%;
+	border-radius:30px;
+	padding:5px 5px 5px 5px;
+
+}
+
+.sidebar_header {
+	color:#14719c;
+	display:block;
+	float: right;
+	width:14%;
+}
+
+.sidebar {
+	clear:both;
+	display:block;
+	background-color:#14719c;
+	float: right;
+	width:13%;
+	border-radius:30px;
+	padding:15px 15px 15px 15px;
+	color:#e3e4e4;
+	margin-right:50px;
+}
+
+.sidebar a {
+	color:#e3e4e4;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>History Tree</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+
+	<div class="header">
+		<h1><%= link_to "History Tree", entries_path %></h1>
+	</div>
+	<p class="flash"><%= flash.notice %></p>
+
+	<%= render :partial => '/categories/sidebar' unless @disable_nav %>
+
+	<div id="content"><%= yield %></div>
+</body>
+
+
+</html>
