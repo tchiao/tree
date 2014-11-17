@@ -16,9 +16,6 @@ class EntriesController < ApplicationController
 
 	def create
 		@entry = Entry.new(entry_params)
-		# Want this line to display date as %m/%d/%Y in text box
-		# Instead shows %Y-%m-%d
-		@entry.date = Date.strptime(entry_params[:date], "%m/%d/%Y").strftime "%m/%d/%Y"
 		@entry.save
 		flash.notice = "'#{@entry.title}' created!"
 		redirect_to entry_path(@entry)
@@ -44,5 +41,10 @@ class EntriesController < ApplicationController
 		redirect_to entry_path(@entry)
 	end
 
+	private
+
+	def entry_params
+		params.require(:entry).permit(:title, :date, :location, :body, :category_list)
+	end
 
 end
