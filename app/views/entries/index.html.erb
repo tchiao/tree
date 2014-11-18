@@ -1,9 +1,15 @@
+<style>
+.dark {
+
+  background-color: #0e0e0e;
+}
+</style>
 <h2 class="entry_header">Entries</h2>
 
 <% @entries.order(:date).each do |entry| %>
 	<div class="all_entries">
 
-		<p>
+		<p class="<%= cycle('light','dark') %>">
 			<strong><%= link_to entry.title, entry_path(entry) %></strong><br>
 			<em><%= entry.date %></em><br>
 			<%= entry.body %><br>

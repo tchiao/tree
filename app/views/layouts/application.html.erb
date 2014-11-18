@@ -12,8 +12,17 @@
 	<div class="header">
 		<h1><%= link_to "History Tree", entries_path %></h1>
 	</div>
-	<p class="flash"><%= flash.notice %></p>
 
+  <div id="flash-container">
+    <% if flash[:notice] %>
+      <div class="alert alert-notice"><%= flash[:notice] %></div>
+    <% elsif flash[:error] %>
+      <div class="alert alert-error"><%= flash[:error] %></div>
+    <% elsif flash[:alert] %>
+      <div class="alert alert-alert"><%= flash[:alert] %></div>
+    <% end %>
+  </div>
+  <br/>
 	<%= render :partial => '/categories/sidebar' unless @disable_nav %>
 
 	<div id="content"><%= yield %></div>

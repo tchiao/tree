@@ -1,9 +1,15 @@
+<style>
+.dark {
+
+  background-color: #0e0e0e;
+}
+</style>
 <h2>Categories</h2>
 
 <div class="categories">
 	<ul>
 		<% @categories.each do |category| %>
-			<li>
+			<li class="<%= cycle('light','dark') %>">
 				<%= link_to "#{category.name} (#{category.entries.size})", category_path(category) %> || 
 				<%= link_to "delete", category_path(category), method: :delete, data: {confirm: "Are you sure?"} %>
 			</li>

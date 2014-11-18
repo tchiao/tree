@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :show_navbar, :disable_nav
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
   def show_navbar
@@ -12,6 +13,10 @@ class ApplicationController < ActionController::Base
 
   def disable_nav
   	@disable_nav = true
+  end
+
+  def configure_permitted_parameters
+     devise_parameter_sanitizer.for(:sign_up) << :name
   end
 
 end

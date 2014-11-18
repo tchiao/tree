@@ -34,8 +34,6 @@ class EntriesController < ApplicationController
 
 	def update
 		@entry = Entry.find(params[:id])
-		## Should at least maintain same date structure, but reverses day and month
-		@entry.date = Date.strptime(entry_params[:date], "%m/%d/%Y").strftime "%m/%d/%Y"
 		@entry.update(entry_params)
 		flash.notice = "'#{@entry.title}' updated!"
 		redirect_to entry_path(@entry)
