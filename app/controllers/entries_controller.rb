@@ -1,5 +1,4 @@
 class EntriesController < ApplicationController
-	include EntriesHelper
 	before_filter :disable_nav, only: [:new, :edit]
 	
 	def index

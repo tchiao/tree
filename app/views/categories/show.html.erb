@@ -1,7 +1,8 @@
-<h2><em><%= @category.name %></em> category</h2>
+<h2><em><%= @category.name %></em> category</h2></br>
 
+<div class="centered-entries">
 <% @category.entries.each do |entry| %>
-	<div class="all_entries">
+	<div class="<%= cycle('left-entry all_entries','right-entry all_entries') %>">
 		<p>
 			<strong><%= link_to entry.title, entry_path(entry) %></strong><br>
 			<em><%= entry.date %></em><br>
@@ -11,5 +12,6 @@
 		</p>
 	</div>
 <% end %>
+</div>
 
 <%= link_to "All entries", entries_path %>

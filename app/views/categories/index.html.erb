@@ -1,20 +1,16 @@
-<style>
-.dark {
+<div class="row">
+  <h2>Categories</h2>
 
-  background-color: #0e0e0e;
-}
-</style>
-<h2>Categories</h2>
-
-<div class="categories">
-	<ul>
+  <div class="categories">
 		<% @categories.each do |category| %>
-			<li class="<%= cycle('light','dark') %>">
+			<div>
 				<%= link_to "#{category.name} (#{category.entries.size})", category_path(category) %> || 
 				<%= link_to "delete", category_path(category), method: :delete, data: {confirm: "Are you sure?"} %>
-			</li>
+			</div>
 		<% end %>
-	</ul>
+  </div>
 </div>
 
-<p><%= link_to 'All entries', entries_path %></p>
+<div class="row"><%= link_to 'All entries', entries_path %></div>
+
+

@@ -1,0 +1,220 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+
+body {
+	background-color:#fffefb;
+	font-family: 'Open Sans', sans-serif;
+	font-weight:300;
+  color:#72716e;
+}
+
+.header {
+	margin-top:20px;
+}
+
+h2, h3, h4 {
+	color:#6c8b29;
+	font-weight:700;
+}
+
+a {
+	color:#6c8b29;
+	text-decoration:none;
+}
+
+a:hover {
+	color:#6c8b29;
+	text-decoration:underline;
+}
+
+.entry_header {
+	margin-bottom: 20px;
+}
+
+.all_entries, .one_entry {
+	background-color:#bad08b;
+	color:#fffefb;
+	border-bottom:5px solid #9eb767;
+}
+
+.left-entry {
+	margin:0 550px 20px 100px;
+	border-radius:0 50px 50px 50px;
+	padding:15px 20px 15px 20px;
+}
+
+.right-entry {
+	margin:0 200px 20px 450px;
+	border-radius:50px 0 50px 50px;
+	padding:15px 20px 15px 15px;
+	text-align:right;
+}
+
+.one_entry {
+	width:75%;
+	margin:20px 0 20px 0;
+	border-radius:0 50px 50px 50px;
+	padding:10px 20px 25px 25px;
+}
+
+.categories {
+	display:block;
+	float: left;
+	padding:20px 25px 25px 25px;
+	color:#fffefb;
+	margin:20px 0 20px 0;
+	background-color:#bad08b;
+	border-radius:0 50px 50px 50px;
+	border-bottom:5px solid #9eb767;
+}
+
+.sidebar_header {
+	color:#6c8b29;
+}
+
+.sidebar {
+	clear:both;
+	background-color:#eceae2;
+	border-bottom: 5px solid #d4d3cd;
+	display:block;
+	float: right;
+	text-align: center;
+	padding:12px 20px 20px 20px;
+	color:#e3e4e4;
+	margin-top:20px;
+}
+
+.sidebar a {
+	color:#9eb767;
+}
+
+.alert {
+  margin:auto;
+  width:50%;
+  position:relative;
+  padding:10px;
+  color:#fffefb;
+  text-align:center;
+  font-weight: 300;
+  border-radius:3px;
+}
+
+.alert-notice {
+  background-color:#bcc87c;
+  border-bottom:5px solid #a9b667;
+}
+
+.alert-error, .alert-alert {
+	background-color:#d9e276;
+  border-bottom:5px solid #cbd378;
+}
+
+a:hover, a:focus {
+	color:#6c8b29;
+}
+
+.nav > li > a:hover, .nav > li > a:focus, .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+	background-color:#fffefb;
+}
+
+.dropdown-menu {
+	border:1px solid #ece9db;
+}
+
+.dropdown-menu > li > a {
+	color:#6c8b29;
+}
+
+.chat-bubble-arrow-border {
+	border-color: transparent transparent #ece9db transparent;
+	border-style:solid;
+	border-width:9px;
+	height:0;
+	width:0;
+	position:absolute;
+	top:-19px;
+	right:30px;
+}
+
+.chat-bubble-arrow {
+	border-color:transparent transparent white transparent;
+	border-style:solid;
+	border-width:9px;
+	height:0;
+	width:0;
+	position:absolute;
+	top:-17px;
+	right:30px;
+}
+
+.form-field {
+  width:100%;
+  font-size:15px;
+  padding:7px 10px;
+  color:#72716e;
+  background:white;
+  border:0;
+  border-bottom:5px solid #d4d3cd;
+  border-radius:3px;
+}
+
+.button {
+  padding:10px 15px;
+  color:#fffefb;
+  border:1px solid #bad08b;
+  background-color:#bad08b;
+  font-weight:700;
+}
+
+.button:hover {
+  border:1px solid #bcc87c;
+  background-color: #bcc87c;
+}
+
+.cancel-button {
+  border:1px solid #bad08b;
+  background-color:#bad08b;
+}
+
+.cancel-button:hover {
+  border:1px solid #bad08b;
+  background-color:#bad08b;
+}
+
+.login-link {
+  font-weight:700;
+}
+
+.form-box {
+  background-color:#eceae2;
+  padding:25px 30px 25px 30px;
+  width:30%;
+  margin:0 auto;
+  margin-top:20px;
+  margin-bottom:10px;
+  border-radius:5px;
+}
+
+.act-form-box {
+  width:60%;
+  background-color:#eceae2;
+  padding:25px 35px 25px 30px;
+  margin-top:20px;
+  margin-bottom:20px;
+  border-radius:5px;
+}

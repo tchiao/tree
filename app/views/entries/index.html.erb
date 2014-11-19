@@ -1,23 +1,15 @@
-<style>
-.dark {
-
-  background-color: #0e0e0e;
-}
-</style>
-<h2 class="entry_header">Entries</h2>
-
-<% @entries.order(:date).each do |entry| %>
-	<div class="all_entries">
-
-		<p class="<%= cycle('light','dark') %>">
-			<strong><%= link_to entry.title, entry_path(entry) %></strong><br>
-			<em><%= entry.date %></em><br>
-			<%= entry.body %><br>
-			<%= link_to "Edit", edit_entry_path(entry) %> || 
-			<%= link_to "Delete", entry_path(entry), method: :delete, data: {confirm: "Are you sure?"} %>
-		</p>
-	</div>
-
-<% end %>
-
-<%= link_to "Add Entry", new_entry_path %>
+<div class="row">
+  <% @entries.order(:date).each do |entry| %>
+    <div class="<%= cycle('left-entry all_entries','right-entry all_entries') %>">
+       <p>
+        <strong><%= link_to entry.title, entry_path(entry) %></strong><br>
+        <em><%= entry.date.strftime("%B %e, %Y") %></em><br>
+        <%= entry.body %><br>
+        <%= link_to "Edit", edit_entry_path(entry) %> || 
+        <%= link_to "Delete", entry_path(entry), method: :delete, data: {confirm: "Are you sure?"} %>
+      </p>
+    </div>
+  
+    <% end %>
+  <%= link_to "Add Entry", new_entry_path %>
+</div>
