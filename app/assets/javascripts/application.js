@@ -22,4 +22,4 @@ $(document).ready(function(){
     $('#flash-container').slideUp();
   }, 1500);
 
-})
+});

@@ -1,0 +1,11 @@
+<%= content_tag :div, id: "entry-#{entry.id}" do %>
+  <div class="<%= cycle('left-entry all_entries','right-entry all_entries') %>">
+   <p>
+    <strong><%= link_to entry.title, entry_path(entry), "data-toggle" => "modal", 'data-target' => "#show_modal", remote: :true %></strong><br>
+    <em><%= entry.date.strftime("%B %e, %Y") %></em><br>
+    <%= entry.body %><br>
+    
+    <%= render partial: 'buttons', locals: { entry: entry } %>
+  </p>
+  </div>
+<% end %>

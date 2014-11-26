@@ -1,42 +1,39 @@
-<%= form_for(@entry) do |f| %>
-  <% if @entry.errors.any? %>
-  <div id="error explanation">
-    <h2><%= pluralize(@entries.errors.count, "error") %> prohibited this entry from being saved:</h2>
-    <ul>
-      <% @article.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
+<%= form_for entry, remote: :true do |f| %>
+
+  <p>
+    <%= f.label :title, 'What' %><br>
+    <%= f.text_field :title, class: 'form-field', placeholder: 'What happened?'  %>
+  </p>
+
+  <p>
+    <%= f.label :date, 'When' %><br/>
+    <div id="date1" class="datefield">
+      <input id="month" class="date-field" name="entry[date(2i)]" maxlength="2" placeholder="MM" value="<%= current_date_val(entry.date.try(:month)) %>" data-autotab-format="number"/> /
+      <input id="day" class="date-field" name="entry[date(3i)]" maxlength="2" placeholder="DD" value="<%= current_date_val(entry.date.try(:day)) %>" data-autotab-format="number" /> /
+      <input id="year" class="date-field" name="entry[date(1i)]" maxlength="4" placeholder="YYYY" value="<%= current_date_val(entry.date.try(:year)) %>" data-autotab-format="number"/>
+    </div>
+    <span class="month-errors"></span><span class="day-errors"></span>
+  </p>
+
+  <p>
+    <%= f.label :location, 'Where' %><br>
+    <%= f.text_field :location, class: 'form-field', placeholder: 'Where did it happen?' %>
+  </p>
+
+  <p>
+    <%= f.label :body, 'How' %><br>
+    <%= f.text_area :body, class: 'form-body form-field', placeholder: 'How did it happen?' %>
+  </p>
+
+  <p>
+    <%= f.label :category_list, 'Categories' %><br>
+    <%= f.text_field :category_list, class: 'form-field tag-image', autocomplete: "off" %>
+  </p>
+
+
+  <div class="modal-footer">
+    <button type="button" class="cancel-button button" data-dismiss="modal">Close</button>
+    <%= f.submit 'Save', class: 'button form-button' %>
   </div>
-  <% end %>
-
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
-
-  <p>
-    <%= f.label :date, 'Date (MM/DD/YYYY)' %><br>
-    <%= f.date_field :date %>
-  </p>
-
-  <p>
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
-  </p>
-
-  <p>
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </p>
-
-  <p>
-    <%= f.label :category_list %><br>
-    <%= f.text_field :category_list %>
-  </p>
-
-  <p>
-    <%= f.submit %>
-  </p>
 
 <% end %>

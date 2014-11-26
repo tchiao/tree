@@ -43,7 +43,8 @@
 
     <div id="flash-container">
       <% if flash[:notice] %>
-        <div class="alert alert-notice"><%= flash[:notice] %></div>
+        <div class="alert alert-notice">
+          <%= flash[:notice] %></div>
       <% elsif flash[:error] %>
         <div class="alert alert-error"><%= flash[:error] %></div>
       <% elsif flash[:alert] %>

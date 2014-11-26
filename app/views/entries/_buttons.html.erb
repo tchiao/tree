@@ -1,0 +1,7 @@
+<%= link_to edit_entry_path(entry), "data-toggle" => "modal", 'data-target' => "#entry_modal", 'data-dismiss' => "modal", remote: :true do %>
+  <span class="glyphicon glyphicon-pencil edit-icon" aria-hidden="true" aria-label="Edit" ></span>
+<% end %>
+
+<%= link_to entry_path(entry), method: :delete, data: {confirm: "Are you sure?"} do %>
+  <span class="glyphicon glyphicon-trash" aria-hidden="true" aria-label="Delete"></span>
+<% end %>

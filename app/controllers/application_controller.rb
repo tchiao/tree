@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :show_navbar, :disable_nav
   before_action :configure_permitted_parameters, if: :devise_controller?
+  after_filter { flash.discard if request.xhr? }
 
   protected
   def show_navbar

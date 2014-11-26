@@ -1,0 +1,5 @@
+<%= render partial: 'layouts/flash.js' %>
+
+<% if @entry.valid? %>
+  $(".entries_index").html("<%= j render partial: 'entry', collection: @entries %>");
+<% end %>

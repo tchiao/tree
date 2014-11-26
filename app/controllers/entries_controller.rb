@@ -1,8 +1,10 @@
 class EntriesController < ApplicationController
 	before_filter :disable_nav, only: [:new, :edit]
-	
+	respond_to :html, :js
+
 	def index
 		@entries = Entry.all
+		@entry = Entry.new
 	end
 
 	def show
@@ -15,16 +17,29 @@ class EntriesController < ApplicationController
 
 	def create
 		@entry = Entry.new(entry_params)
-		@entry.save
-		flash.notice = "'#{@entry.title}' created!"
-		redirect_to entry_path(@entry)
+
+		if @entry.save
+			@entries = Entry.all
+			flash[:notice] = "'#{@entry.title}' created!"
+		else
+			flash[:error] = "Sorry, there was a problem creating the event."
+		end
+		
+		respond_with(@entry) do |format|
+			format.html { redirect_to entries_path }
+		end
 	end
 
 	def destroy
 		@entry = Entry.find(params[:id])
-		@entry.destroy
-		flash.notice = "'#{@entry.title}' deleted"
-		redirect_to entries_path
+		if @entry.destroy
+			@entries = Entry.all
+			flash[:notice] = "'#{@entry.title}' deleted"
+			redirect_to entries_path
+		else
+			flash[:error] = "Sorry, there was a problem deleting the event."
+			render :show
+		end
 	end
 
 	def edit
@@ -33,9 +48,17 @@ class EntriesController < ApplicationController
 
 	def update
 		@entry = Entry.find(params[:id])
-		@entry.update(entry_params)
-		flash.notice = "'#{@entry.title}' updated!"
-		redirect_to entry_path(@entry)
+
+		if @entry.update(entry_params)
+			@entries = Entry.all
+			flash[:notice] = "'#{@entry.title}' updated!"
+		else
+			flash[:error] = "Sorry, there was a problem updating the event."
+		end
+
+		respond_with(@entry) do |format|
+			format.html { redirect_to entries_path }
+		end
 	end
 
 	private

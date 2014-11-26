@@ -1,6 +1,15 @@
 class Entry < ActiveRecord::Base
 	has_many :categorizings
 	has_many :categories, through: :categorizings
+	default_scope { order('date') }
+	validates_presence_of :title, :date, :location, :body
+	after_destroy :remove_empty_categories
+
+	def remove_empty_categories
+		categories.each do |category|
+			category.destroy if category.entries.empty?
+		end
+	end
 
 	def category_list
 		categories.join(", ")
