@@ -3,7 +3,8 @@ class EntriesController < ApplicationController
 	respond_to :html, :js
 
 	def index
-		@entries = Entry.all
+		@entries = Entry.search(params[:search])
+		
 		@entry = Entry.new
 	end
 
@@ -21,8 +22,6 @@ class EntriesController < ApplicationController
 		if @entry.save
 			@entries = Entry.all
 			flash[:notice] = "'#{@entry.title}' created!"
-		else
-			flash[:error] = "Sorry, there was a problem creating the event."
 		end
 		
 		respond_with(@entry) do |format|
@@ -52,8 +51,6 @@ class EntriesController < ApplicationController
 		if @entry.update(entry_params)
 			@entries = Entry.all
 			flash[:notice] = "'#{@entry.title}' updated!"
-		else
-			flash[:error] = "Sorry, there was a problem updating the event."
 		end
 
 		respond_with(@entry) do |format|

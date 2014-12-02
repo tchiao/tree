@@ -16,6 +16,18 @@ $("#entry_title").blur(function(){
   fieldPresent("#entry_title", "title-error-field")
 });
 
+// Presence of date
+
+$(".datefield").change(function(){
+  month_val = $("#month").val()
+  day_val = $("#day").val()
+  year_val = $("#year").val()
+  if ((month_val && day_val && year_val) != "") {
+    $(".datefield").removeClass("error-border")
+    $("div.date-error-field").remove();
+  }
+});
+
 // Valid month/day
 
 $("#month").change(function(){
@@ -56,12 +68,4 @@ $("#entry_location").blur(function(){
 
 $("#entry_body").blur(function(){
   fieldPresent("#entry_body", "body-error-field")
-});
-
-$('#new_entry').on('submit', function() {
-  $('#entry_modal').modal('hide');
-});
-
-$('#edit_entry').on('submit', function() {
-  $('#entry_modal').modal('hide');
 });

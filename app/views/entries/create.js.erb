@@ -1,5 +1,9 @@
 <%= render partial: 'layouts/flash.js' %>
 
-<% if @entry.valid? %>
+<% if @entry.errors.any? %>
+  $('#modal-entry-body').html("<%=j render partial: 'form', locals: { entry: @entry } %>");
+  <%= render partial: 'validation.js' %>
+<% else %>
+  $('#entry_modal').modal('hide');
   $(".entries_index").html("<%= j render partial: 'entry', collection: @entries %>");
 <% end %>

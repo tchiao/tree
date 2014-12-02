@@ -20,4 +20,12 @@ class Entry < ActiveRecord::Base
 		new_or_found_categories = category_names.collect {|name| Category.find_or_create_by(name: name) }
 		self.categories = new_or_found_categories
 	end
+
+	def self.search(search)
+		if search
+			where('title LIKE ?', "%#{search}")
+		else
+			Entry.all
+		end
+	end
 end

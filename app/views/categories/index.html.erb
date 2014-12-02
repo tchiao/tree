@@ -4,13 +4,19 @@
   <div class="categories">
 		<% @categories.each do |category| %>
 			<div>
-				<%= link_to "#{category.name} (#{category.entries.size})", category_path(category) %> || 
-				<%= link_to "delete", category_path(category), method: :delete, data: {confirm: "Are you sure?"} %>
+				<%= link_to "#{category.name} (#{category.entries.size})", category_path(category) %> 
+
+        <% if current_user %>
+  				<small>
+            <%= link_to category_path(category), method: :delete, data: {confirm: "Are you sure?"} do %>
+              <span class="glyphicon glyphicon-trash category-trash" aria-hidden="true" aria-label="Delete"></span>
+            <% end %>
+          </small>
+        <% end %>
+        
 			</div>
 		<% end %>
   </div>
 </div>
 
 <div class="row"><%= link_to 'All entries', entries_path %></div>
-
-

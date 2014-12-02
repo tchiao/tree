@@ -1,7 +1,19 @@
 <div class="row">
+
+  <div class='search-box pull-right'>
+  <%= form_tag entries_path, method: 'get' do %>
+    <%= text_field_tag :search, params[:search], class: 'search-field' %>
+    <%= submit_tag "Search", name: nil, class: 'button search-button' %>
+  <% end %>
+  </div>
+  <br/><br/>
+  <% if current_user %>
   <div class='add-entry-row'>
     <%= link_to '⊕', new_entry_path, class: 'add-entry-icon', "data-toggle" => "modal", 'data-target' => "#entry_modal", remote: :true %>
   </div>
+  <% else %>
+  <br/><br/><br/>
+  <% end %>
 
   <div class="modal fade" id="entry_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">

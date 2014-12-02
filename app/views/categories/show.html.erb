@@ -1,17 +1,35 @@
 <h2><em><%= @category.name %></em> category</h2></br>
 
-<div class="centered-entries">
-<% @category.entries.each do |entry| %>
-	<div class="<%= cycle('left-entry all_entries','right-entry all_entries') %>">
-		<p>
-			<strong><%= link_to entry.title, entry_path(entry) %></strong><br>
-			<em><%= entry.date %></em><br>
-			<%= entry.body %><br>
-			<%= link_to "Edit", edit_entry_path(entry) %> || 
-			<%= link_to "Delete", entry_path(entry), method: :delete, data: {confirm: "Are you sure?"} %>
-		</p>
-	</div>
-<% end %>
-</div>
+  <div class="modal fade" id="entry_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content modal-form">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+           <br/>
+          <div id="modal-entry-body">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="show_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content one-entry">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <div id="modal-show-body">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="entries_index">
+    <%= render partial: 'entries/entry', collection: @entries %>
+  </div>
 
 <%= link_to "All entries", entries_path %>

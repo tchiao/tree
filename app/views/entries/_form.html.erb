@@ -2,38 +2,54 @@
 
   <p>
     <%= f.label :title, 'What' %><br>
-    <%= f.text_field :title, class: 'form-field', placeholder: 'What happened?'  %>
+    <%= f.text_field :title, class: "form-field #{error_border(entry.errors[:title])}", placeholder: 'What happened?' %>
+    <%= error_message(entry.errors[:title], 'title') %>
   </p>
-
+  
   <p>
     <%= f.label :date, 'When' %><br/>
-    <div id="date1" class="datefield">
+    <div id="date1" class="datefield <%= error_border(entry.errors[:date]) %>">
       <input id="month" class="date-field" name="entry[date(2i)]" maxlength="2" placeholder="MM" value="<%= current_date_val(entry.date.try(:month)) %>" data-autotab-format="number"/> /
       <input id="day" class="date-field" name="entry[date(3i)]" maxlength="2" placeholder="DD" value="<%= current_date_val(entry.date.try(:day)) %>" data-autotab-format="number" /> /
       <input id="year" class="date-field" name="entry[date(1i)]" maxlength="4" placeholder="YYYY" value="<%= current_date_val(entry.date.try(:year)) %>" data-autotab-format="number"/>
     </div>
     <span class="month-errors"></span><span class="day-errors"></span>
+    <%= error_message(entry.errors[:date], 'date') %>
   </p>
 
   <p>
     <%= f.label :location, 'Where' %><br>
-    <%= f.text_field :location, class: 'form-field', placeholder: 'Where did it happen?' %>
+    <%= f.text_field :location, class: "form-field #{error_border(entry.errors[:location])}", placeholder: 'Where did it happen?' %>
+    <%= error_message(entry.errors[:location], 'location') %>
   </p>
 
   <p>
     <%= f.label :body, 'How' %><br>
-    <%= f.text_area :body, class: 'form-body form-field', placeholder: 'How did it happen?' %>
+    <%= f.text_area :body, class: "form-body form-field #{error_border(entry.errors[:body])}", placeholder: 'How did it happen?' %>
+    <%= error_message(entry.errors[:body], 'body') %>
   </p>
 
   <p>
     <%= f.label :category_list, 'Categories' %><br>
-    <%= f.text_field :category_list, class: 'form-field tag-image', autocomplete: "off" %>
+    <%= f.text_field :category_list, id: "select2field", style: "width:100%" %>
   </p>
-
 
   <div class="modal-footer">
     <button type="button" class="cancel-button button" data-dismiss="modal">Close</button>
-    <%= f.submit 'Save', class: 'button form-button' %>
+    <%= f.submit 'Save', class: 'button' %>
   </div>
 
 <% end %>
+
+<script>
+
+$(document).ready(function() {
+   $("#select2field").select2({
+    minimumInputLength: 1,
+    tags: <%= raw Category.pluck(:name) %>,
+    tokenSeparators: [",", ", "]
+   });
+
+});
+
+</script>

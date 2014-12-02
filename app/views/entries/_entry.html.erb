@@ -5,7 +5,7 @@
     <em><%= entry.date.strftime("%B %e, %Y") %></em><br>
     <%= entry.body %><br>
     
-    <%= render partial: 'buttons', locals: { entry: entry } %>
+    <%= render partial: 'entries/buttons', locals: { entry: entry } %>
   </p>
   </div>
 <% end %>
