@@ -1,6 +1,8 @@
 <div class="sidebar">
   <h4 class="sidebar_header">Categories</h4>
   <% @categories.each do |category| %>
-  <div><%= link_to "#{category.name} (#{category.entries.size})", category_path(category) %></div>
+    <% if category.entries.size > 0 %>
+      <div><%= link_to "#{category.name} (#{category.entries.size})", category_path(category) %></div>
+    <% end %>
   <% end %>
 </div>

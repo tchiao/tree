@@ -11,6 +11,65 @@ function fieldPresent(id, div_class) {
   }
 }
 
+function validMonth() {
+  month_val = $('#month').val()
+
+  if ((month_val >= 1 && month_val <= 12) || month_val == "") {
+    $(".month-errors").text("");
+    $("#month").removeClass("error-font")
+    $("#date1").removeClass("month-error-border")
+  }
+  else {
+    $("#month").addClass("error-font")
+    $("#date1").addClass("month-error-border")
+    $(".month-errors").text("That month is invalid. ")
+  }
+}
+
+function validDay(last_day) {
+  day_val = $('#day').val()
+  if ((day_val >= 1 && day_val <= last_day) || day_val == "") {
+    $(".day-errors").text("");
+    $("#day").removeClass("error-font")
+    $("#date1").removeClass("day-error-border")
+  }
+  else {
+    $("#day").addClass("error-font")
+    $("#date1").addClass("day-error-border")
+    $(".day-errors").text("That day is invalid. ")
+  }
+}
+
+function validYear()  {
+  year_val = $('#year').val()
+  current_year = new Date().getFullYear()
+  if ((year_val >= 1000 && year_val <= current_year) || year_val == "") {
+    $(".year-errors").text("");
+    $("#year").removeClass("error-font")
+    $("#date1").removeClass("year-error-border")
+  }
+  else {
+    $("#year").addClass("error-font")
+    $("#date1").addClass("year-error-border")
+    $(".year-errors").text("That year is invalid. ")
+  }
+}
+
+function validDate() {
+  month_val = $('#month').val()
+  var month_group = ["1", "3", "5", "7", "8", "10", "12"];
+
+  validMonth();
+  validYear();
+  if(month_group.indexOf(month_val) > -1) {
+    validDay(31);
+  } else if (month_val == 4 || month_val == 6 || month_val == 9 || month_val == 11) {
+    validDay(30);
+  } else if (month_val == 2) {
+    validDay(29);
+  }
+}
+
 // Presence of title
 $("#entry_title").blur(function(){
   fieldPresent("#entry_title", "title-error-field")
@@ -31,31 +90,15 @@ $(".datefield").change(function(){
 // Valid month/day
 
 $("#month").change(function(){
-  new_val = $(this).val()
-  if(new_val < 1 || new_val > 12) {
-    $("#month").addClass("error-font")
-    $("#date1").addClass("month-error-border")
-    $(".month-errors").append("That month is invalid. ")
-  }
-  else {
-    $(".month-errors").remove();
-    $("#month").removeClass("error-font")
-    $("#date1").removeClass("month-error-border")
-  }
+  validDate();
 });
 
 $("#day").change(function(){
-  new_val = $(this).val()
-  if(new_val < 1 || new_val > 31) {
-    $("#day").addClass("error-font")
-    $("#date1").addClass("day-error-border")
-    $(".day-errors").append("That day is invalid. ")
-  }
-  else {
-    $(".day-errors").remove();
-    $("#day").removeClass("error-font")
-    $("#date1").removeClass("day-error-border")
-  }
+  validDate();
+});
+
+$("#year").change(function(){
+  validDate();
 });
 
 // Presence of location

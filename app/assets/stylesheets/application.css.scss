@@ -306,12 +306,12 @@ a:hover, a:focus {
   font-weight:400;
 }
 
-.blank-error, .title-error-field, .location-error-field, .body-error-field, .date-error-field, .month-errors, .day-errors {
+.blank-error, .title-error-field, .location-error-field, .body-error-field, .date-error-field, .month-errors, .day-errors, .year-errors {
   color:#cd6849;
   font-size:small;
 }
 
-.error-border, .month-error-border, .day-error-border {
+.error-border, .month-error-border, .day-error-border, .year-error-border {
   border-bottom:5px solid #cd6849;
 }
 
@@ -336,22 +336,17 @@ a:hover, a:focus {
 }
 
 .search-field {
-  width:300px;
+  width:250px;
   height:42px;
-  font-size:15px;
+  font-size:14px;
   padding:7px 10px;
   color:#72716e;
   background:#eceae2;
   border:0;
-  margin-right:-4px;
 }
 
 .search-field:focus {
   outline:none;
-}
-
-.search-button {
-  height:42px;
 }
 
 .select2-no-results {
@@ -374,5 +369,55 @@ li.select2-result {
 
 li.select2-result:first-child {
   margin-top: 4px !important;
+}
+
+.date-search-link, {
+  margin-top:5px;
+  font-size:small;
+}
+
+.keyword-search-link {
+  margin-top:-5px;
+  font-size:small;
+}
+
+.date-search-section {
+  margin:30px 30px 0 0;
+}
+
+.date-search-box { 
+  width:135px;
+  font-size:14px;
+  color:#72716e;
+  background:#eceae2;
+  padding:11px 0px 12px 0px;
+  border:0;
+}
+
+.date-search-box input { 
+  text-align:center;
+  border: none; 
+  background:#eceae2;
+}
+
+.date-search-box input#month {
+  width:35px;
+  padding-left:6px;
+}
+
+.date-search-box input#day {
+  width:25px;
+}
+
+.date-search-box input#year {
+  width:43px;
+}
+
+.date-search-box input:focus {
+  outline:none;
+}
+
+.date-text {
+  margin:0 1px 0px 5px
 }
 

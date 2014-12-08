@@ -3,7 +3,7 @@ class EntriesController < ApplicationController
 	respond_to :html, :js
 
 	def index
-		@entries = Entry.search(params[:search])
+		@entries = Entry.keyword_search(params[:keyword_search]).date_search(params[:start_date], params[:end_date])
 		
 		@entry = Entry.new
 	end
@@ -17,9 +17,10 @@ class EntriesController < ApplicationController
 	end
 
 	def create
+		categories_params = params[:entry].delete(:category_list)
 		@entry = Entry.new(entry_params)
-
 		if @entry.save
+			@entry.update_attributes(category_list: categories_params)
 			@entries = Entry.all
 			flash[:notice] = "'#{@entry.title}' created!"
 		end

@@ -13,7 +13,7 @@
       <input id="day" class="date-field" name="entry[date(3i)]" maxlength="2" placeholder="DD" value="<%= current_date_val(entry.date.try(:day)) %>" data-autotab-format="number" /> /
       <input id="year" class="date-field" name="entry[date(1i)]" maxlength="4" placeholder="YYYY" value="<%= current_date_val(entry.date.try(:year)) %>" data-autotab-format="number"/>
     </div>
-    <span class="month-errors"></span><span class="day-errors"></span>
+    <span class="month-errors"></span><span class="day-errors"></span><span class="year-errors"></span>
     <%= error_message(entry.errors[:date], 'date') %>
   </p>
 
@@ -33,7 +33,7 @@
     <%= f.label :category_list, 'Categories' %><br>
     <%= f.text_field :category_list, id: "select2field", style: "width:100%" %>
   </p>
-
+  
   <div class="modal-footer">
     <button type="button" class="cancel-button button" data-dismiss="modal">Close</button>
     <%= f.submit 'Save', class: 'button' %>
@@ -47,7 +47,7 @@ $(document).ready(function() {
    $("#select2field").select2({
     minimumInputLength: 1,
     tags: <%= raw Category.pluck(:name) %>,
-    tokenSeparators: [",", ", "]
+    tokenSeparators: [","]
    });
 
 });

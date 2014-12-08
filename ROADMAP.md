@@ -33,23 +33,26 @@ Users can manually input the event information or enter a link and have that inf
 ### v0.1
 
 * Create entry and category models;
-* Create entry and category controllers 
+* Create entry and category controllers;
 * Create entry and category views.
 
 ### v0.2
 
 * Add Devise;
-* Add seed data.
+* Add seed data;
 * Add edit page for user.
 
 ### v0.3
 
 * Add logo, fonts, and styles;
 * Change form pages;
-* Modals for creating and editing events,
-* Form validation on modals.
+* Modals for creating and editing events.
 
 ### v0.4
 
-* Show & edit modals combined
-* Switch to Thin server
+* Form validation on modals;
+* Show & edit modals combined;
+* Keyword and date search on events.
+
+### v0.5
+
