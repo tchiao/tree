@@ -3,8 +3,11 @@ class EntriesController < ApplicationController
 	respond_to :html, :js
 
 	def index
-		@entries = Entry.keyword_search(params[:keyword_search]).date_search(params[:start_date], params[:end_date])
-		
+		if params[:keyword_search]
+			@entries = Entry.keyword_search(params[:keyword_search])
+		else
+			@entries = Entry.date_search(params[:start_date], params[:end_date])
+		end
 		@entry = Entry.new
 	end
 
