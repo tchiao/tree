@@ -4,6 +4,8 @@ class CreateEntries < ActiveRecord::Migration
     	t.string :title
     	t.date :date
     	t.string :location
+      t.string :people
+      t.string :url
     	t.text :body
     	
       t.timestamps

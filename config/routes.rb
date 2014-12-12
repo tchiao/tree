@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :categories, param: :name
   root 'entries#index'
 
+  post "/scraper" => "scrapers#create"
 end

@@ -3,6 +3,7 @@
 <% if @entry.errors.any? %>
   $('#modal-entry-body').html("<%=j render partial: 'form', locals: { entry: @entry } %>");
   <%= render partial: 'validation.js' %>
+  <%= render partial: 'autopopulate.js' %>
 <% else %>
   $('#entry_modal').modal('hide');
   $(".entries_index").html("<%= j render partial: 'entry', collection: @entries %>");

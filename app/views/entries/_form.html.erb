@@ -1,6 +1,14 @@
 <%= form_for entry, remote: :true do |f| %>
 
   <p>
+    <%= f.text_field :url, class: "form-field url-field", placeholder: "Enter URL of event" %>
+  </p>
+
+  <p>
+  	<button type="button" class="cancel-button button" id="scrape-button">Scrape</button>
+  </p>
+
+  <p>
     <%= f.label :title, 'What' %><br>
     <%= f.text_field :title, class: "form-field #{error_border(entry.errors[:title])}", placeholder: 'What happened?' %>
     <%= error_message(entry.errors[:title], 'title') %>
