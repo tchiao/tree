@@ -20,10 +20,10 @@ class EntriesController < ApplicationController
 	end
 
 	def create
-		categories_params = params[:entry].delete(:category_list)
+		#@categories_params = params[:entry].delete(:category_list)
 		@entry = Entry.new(entry_params)
 		if @entry.save
-			@entry.update_attributes(category_list: categories_params)
+			#@entry.update_attributes(category_list: @categories_params)
 			@entries = Entry.all
 			flash[:notice] = "'#{@entry.title}' created!"
 		end
@@ -51,7 +51,6 @@ class EntriesController < ApplicationController
 
 	def update
 		@entry = Entry.find(params[:id])
-
 		if @entry.update(entry_params)
 			@entries = Entry.all
 			flash[:notice] = "'#{@entry.title}' updated!"
@@ -65,7 +64,7 @@ class EntriesController < ApplicationController
 	private
 
 	def entry_params
-		params.require(:entry).permit(:title, :date, :location, :body, :category_list)
+		params.require(:entry).permit(:title, :date, :location, :body, :category_list, :url)
 	end
 
 end

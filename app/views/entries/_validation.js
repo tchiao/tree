@@ -67,6 +67,8 @@ function validDate() {
     validDay(30);
   } else if (month_val == 2) {
     validDay(29);
+  } else {
+    validDay(30);
   }
 }
 

@@ -2599,8 +2599,8 @@ the specific language governing permissions and limitations under the Apache Lic
             var container = $(document.createElement("div")).attr({
                 "class": "select2-container select2-container-multi"
             }).html([
-                "<ul class='select2-choices'>",
-                "  <li class='select2-search-field'>",
+                "<ul class='select2-choices' id='select2-box-choices'>",
+                "  <li class='select2-search-field' id='start-search-space'>",
                 "    <label for='' class='select2-offscreen'></label>",
                 "    <input type='text' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false' class='select2-input'>",
                 "  </li>",

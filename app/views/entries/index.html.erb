@@ -12,16 +12,16 @@
     <%= form_tag entries_path, method: 'get', id: 'date-search' do %>
 
      <span class="date-search-one date-search-box" id="date-one">
-       <input id="month" class="date-field" name="start_date[(2i)]" maxlength="2" placeholder="MM" value="<%#= current_date_val(entry.date.try(:month)) %>" data-autotab-format="number"/> /
-       <input id="day" class="date-field" name="start_date[(3i)]" maxlength="2" placeholder="DD" value="<%#= current_date_val(entry.date.try(:day)) %>" data-autotab-format="number" /> /
-       <input id="year" class="date-field" name="start_date[(1i)]" maxlength="4" placeholder="YYYY" value="<%#= current_date_val(entry.date.try(:year)) %>" data-autotab-format="number"/> 
+       <input id="date1-month" class="date-field" name="start_date[(2i)]" maxlength="2" placeholder="MM" value="<%#= current_date_val(entry.date.try(:month)) %>" data-autotab-format="number"/> /
+       <input id="date1-day" class="date-field" name="start_date[(3i)]" maxlength="2" placeholder="DD" value="<%#= current_date_val(entry.date.try(:day)) %>" data-autotab-format="number" /> /
+       <input id="date1-year" class="date-field" name="start_date[(1i)]" maxlength="4" placeholder="YYYY" value="<%#= current_date_val(entry.date.try(:year)) %>" data-autotab-format="number"/> 
      </span>
      <span class="date-text">to</span>
 
      <span class="date-search-two date-search-box" id="date-two">
-       <input id="month" class="date-field" name="end_date[(2i)]" maxlength="2" placeholder="MM" value="<%#= current_date_val(entry.date.try(:month)) %>" data-autotab-format="number"/> /
-       <input id="day" class="date-field" name="end_date[(3i)]" maxlength="2" placeholder="DD" value="<%#= current_date_val(entry.date.try(:day)) %>" data-autotab-format="number" /> /
-       <input id="year" class="date-field" name="end_date[(1i)]" maxlength="4" placeholder="YYYY" value="<%#= current_date_val(entry.date.try(:year)) %>" data-autotab-format="number"/> 
+       <input id="date2-month" class="date-field" name="end_date[(2i)]" maxlength="2" placeholder="MM" value="<%#= current_date_val(entry.date.try(:month)) %>" data-autotab-format="number"/> /
+       <input id="date2-day" class="date-field" name="end_date[(3i)]" maxlength="2" placeholder="DD" value="<%#= current_date_val(entry.date.try(:day)) %>" data-autotab-format="number" /> /
+       <input id="date2-year" class="date-field" name="end_date[(1i)]" maxlength="4" placeholder="YYYY" value="<%#= current_date_val(entry.date.try(:year)) %>" data-autotab-format="number"/> 
      </span>
     <% end %><br/>
     <%= link_to "Search by keyword", "#", class: 'keyword-search-link pull-right' %>
