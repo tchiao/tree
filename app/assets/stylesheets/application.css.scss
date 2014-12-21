@@ -405,16 +405,16 @@ li.select2-result:first-child {
   background:#eceae2;
 }
 
-.date-search-box input#month {
+.date-search-box input#date1-month, input#date2-month {
   width:35px;
   padding-left:6px;
 }
 
-.date-search-box input#day {
+.date-search-box input#date1-day, input#date2-day {
   width:25px;
 }
 
-.date-search-box input#year {
+.date-search-box input#date1-year, input#date2-year {
   width:43px;
 }
 

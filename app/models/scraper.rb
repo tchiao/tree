@@ -31,12 +31,11 @@ class Scraper
       end
     else
       @title = @doc.css('title').text.strip rescue nil
+      get_date
     end
     
     @body = get_body
     @category_list = get_categories
-
-
     @results = { title: @title , month: @month, day: @day, year: @year, location: @location, body: @body, category_list: @category_list}
 
   end
@@ -49,6 +48,9 @@ class Scraper
 
   def wiki_location
     @location = @doc.css(".location").text.gsub("\n", ",")
+    if @location == nil
+      @location = @doc.at('th:contains("Areas affected")').next_element.text.gsub("\n", ", ")
+    end
     if @location.split(",").size > 4
       @location = @location.split(",")[0..3].join(",")
     end
@@ -60,6 +62,22 @@ class Scraper
     @month = @date.month
     @day = @date.day
     @year = @date.year
+  end
+
+  def get_date
+    text = @doc.css('p').text
+    day_month_year = /(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov|Dec(?:ember)?) (?:\d{1,2}), (?:\d{4})/
+    month_day_year = /(?:\d{1,2}) (?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov|Dec(?:ember)?) (?:\d{4})/
+    @date = text.scan(month_day_year).first
+    if @date == nil
+      @date = text.scan(day_month_year).first
+    end
+    unless @date == nil
+      @date = Date.parse(@date)
+      @month = @date.month
+      @day = @date.day
+      @year = @date.year
+    end
   end
 
   def get_body
@@ -78,16 +96,10 @@ class Scraper
     for word in document
       text_hash[word] += 1
     end
-
     proper_array = two_proper_nouns
-
-    p "2"
-    p Benchmark.measure {
-      text_hash.delete_if { |key, value| remove_common_words(key) || is_i?(key) || is_sym?(key) || key.length < 2 || proper_array[0].include?(key) || proper_array[1].include?(key) }
-    }
-
-    p "3"
-    p Benchmark.measure { return top_four_categories(proper_array, text_hash) }
+    
+    text_hash.delete_if { |key, value| remove_common_words(key) || is_i?(key) || is_sym?(key) || key.length < 2 || proper_array[0].include?(key) || proper_array[1].include?(key) }
+    return top_four_categories(proper_array, text_hash)
   end
 
   def remove_common_words(word)

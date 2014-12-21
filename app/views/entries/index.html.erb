@@ -1,6 +1,6 @@
 <div class="row">
 
-  <div class='search-box pull-right' >
+  <div class='search-box pull-right'>
     <%= form_tag entries_path, method: 'get', id: 'keyword-search' do %>
     <%= text_field_tag :keyword_search, params[:keyword_search], class: 'search-field', placeholder: 'What are you looking for?' %>
     <% end %>
