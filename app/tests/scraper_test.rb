@@ -36,23 +36,20 @@ def scrape_location
 end
 
 def scrape_dates
-  test_entries = TestEntry.all
+  test_entries = TestEntry.where(article_type: "article_gen").all
   total = test_entries.length
   total_true, total_false = 0, 0
   for t in test_entries
     text = Nokogiri.parse(t.content)
 
-    scraped_date = Scraper.get_date(text, t.url)
-    scraped_array = []
-    if scraped_date != nil
-      scraped_date = Date.parse(scraped_date)
-      scraped_array = [scraped_date.month, scraped_date.day, scraped_date.year]
-    end
-    if scraped_array == [t.actual_month, t.actual_day, t.actual_year]
+    scraped_date = Scraper.get_date(text)
+    actual_date = [t.actual_month, t.actual_day, t.actual_year]
+    if scraped_date == actual_date
       total_true += 1
+      p ["#{t.actual_title}", scraped_date]
     else
       total_false += 1
-      p [scraped_array, [t.actual_month, t.actual_day, t.actual_year]]
+      p [t.actual_title, scraped_date, actual_date]
     end
   end
   accuracy = ((total_true / total.to_f) * 100).round(3)

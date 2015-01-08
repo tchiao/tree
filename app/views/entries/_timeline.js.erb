@@ -1,0 +1,38 @@
+var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+$(document).ready(function(){
+  // set variables
+  
+
+  // calculate timeline bar height
+  
+  
+  // set dot heights based on dates
+
+
+  var entries = <%= raw @entries.to_json %>;
+  window.foo = entries
+  var firstDate = new Date('<%= @entries.first.date %>');
+  var lastDate = new Date('<%= @entries.last.date %>');
+  var barHeight = ((yearsDiff(firstDate, lastDate)) * 50) + 100
+
+  document.getElementById('cd-timeline').style.height=barHeight + "px";
+ <% if true %> 
+
+  for (var i=0; i < entries.length; i+=1) {
+    var entryID = entries[i].id
+    var entryDate = new Date(entries[i].date)
+
+    var topOffset = Math.floor((yearsDiff(entryDate, firstDate)) * 50)
+    $('#timeline-dot-' + entryID).css('top', topOffset);
+    $('#entry-' + entryID).css('top', topOffset);
+    
+  }
+<% end %>
+});
+
+function yearsDiff(date1, date2) {
+  var utc1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate());
+  var utc2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate());
+  return Math.abs((utc2 - utc1) / (_MS_PER_DAY * 365));
+}

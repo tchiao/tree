@@ -29,15 +29,46 @@ class Entry < ActiveRecord::Base
 			Entry.all
 		end
 	end
-
+ 
 	def self.date_search(start_date, end_date)
-		if start_date && end_date
-			date1 = Date.new start_date["(1i)"].to_i, start_date["(2i)"].to_i, start_date["(3i)"].to_i
-			date2 = Date.new end_date["(1i)"].to_i, end_date["(2i)"].to_i, end_date["(3i)"].to_i
-			where('date BETWEEN ? AND ?', "#{date1}", "#{date2}")
+		start_month = 1
+		start_day = 1
+		if Entry.count != 0
+			start_year = Entry.first.date.year
+			end_year = Entry.last.date.year
 		else
-			Entry.all
+			start_year = 1000
+			end_year = Date.today.year
 		end
+		end_month = 12
+		end_day = 31
+
+		if start_date && end_date
+			if start_date["(1i)"].length == 4
+				start_year = start_date["(1i)"].to_i
+				if start_date["(2i)"] != ""
+					start_month = start_date["(2i)"].to_i
+				end
+				if start_date["(3i)"] != ""
+					start_day = start_date["(3i)"].to_i
+				end
+			end
+
+			if end_date["(1i)"].length == 4
+				end_year = end_date["(1i)"].to_i
+				if end_date["(2i)"] != ""
+					end_month = end_date["(2i)"].to_i
+				end
+				if end_date["(3i)"] != ""
+					end_day = end_date["(3i)"].to_i
+				end
+			end
+		end
+
+		date1 = Date.new start_year, start_month, start_day
+		date2 = Date.new end_year, end_month, end_day 
+
+		where('date BETWEEN ? AND ?', "#{date1}", "#{date2}")
 	end
 
 end

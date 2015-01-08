@@ -53,14 +53,18 @@ a:hover {
 	border-bottom:5px solid #9eb767;
 }
 
+.absolute_entries {
+  position:absolute;
+}
+
 .left-entry {
-	margin:0 550px 20px 100px;
+	margin:0 550px 20px 50px;
 	border-radius:0 50px 50px 50px;
 	padding:15px 20px 15px 20px;
 }
 
 .right-entry {
-	margin:0 200px 20px 450px;
+	margin:0 44px 20px 556px;
 	border-radius:50px 0 50px 50px;
 	padding:15px 20px 15px 15px;
 	text-align:right;
@@ -174,7 +178,7 @@ a:hover, a:focus {
 }
 
 .url-field {
-  margin:7px 0;
+  margin-top:7px;
   border-bottom:5px solid #cbd378;
 }
 
@@ -198,6 +202,7 @@ a:hover, a:focus {
 }
 
 .cancel-button {
+  margin-top:5px;
   border:1px solid #d4d3cd;
   background-color:#d4d3cd;
 }
@@ -311,7 +316,7 @@ a:hover, a:focus {
   font-weight:400;
 }
 
-.blank-error, .title-error-field, .location-error-field, .body-error-field, .date-error-field, .month-errors, .day-errors, .year-errors {
+.blank-error, .title-error-field, .location-error-field, .body-error-field, .date-error-field, .month-errors, .day-errors, .year-errors, .url-errors {
   color:#cd6849;
   font-size:small;
 }
@@ -426,3 +431,29 @@ li.select2-result:first-child {
   margin:0 1px 0px 5px
 }
 
+#cd-timeline {
+  position: relative;
+  padding: 50px;
+  margin:0 auto;
+}
+
+#cd-timeline::before {
+  content: '';
+  top:0px;
+  bottom:100px;
+  left:50%;
+  position: absolute;
+  width:6px;
+  background-color:#8b5e30;
+}
+
+.timeline-dots {
+  position:absolute;
+  left:50%;
+  margin-left:-12px;
+  height:30px;
+  width:30px;
+  border-radius:30px;
+  background-color:#795c3e;
+  border-bottom:5px solid #513c26;
+}

@@ -9,6 +9,10 @@ class EntriesController < ApplicationController
 			@entries = Entry.date_search(params[:start_date], params[:end_date])
 		end
 		@entry = Entry.new
+		respond_to do |format|
+      format.html
+      format.js
+    end
 	end
 
 	def show
