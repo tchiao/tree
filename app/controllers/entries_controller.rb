@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
 	before_filter :disable_nav, only: [:new, :edit]
-	respond_to :html, :js
+	respond_to :html, :js, :json
 
 	def index
 		if params[:keyword_search]
@@ -12,6 +12,7 @@ class EntriesController < ApplicationController
 		respond_to do |format|
       format.html
       format.js
+      format.json { render :index }
     end
 	end
 
@@ -39,13 +40,14 @@ class EntriesController < ApplicationController
 
 	def destroy
 		@entry = Entry.find(params[:id])
+
 		if @entry.destroy
 			@entries = Entry.all
 			flash[:notice] = "'#{@entry.title}' deleted"
 			redirect_to entries_path
 		else
 			flash[:error] = "Sorry, there was a problem deleting the event."
-			render :show
+			redirect_to entries_path
 		end
 	end
 

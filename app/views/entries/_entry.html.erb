@@ -1,13 +1,9 @@
-
-<%#= content_tag :div, class: "timeline-dots", id: "timeline-dot-#{entry.id}" do %><%# end %>
-<%#= content_tag :div, class: 'absolute_entries', id: "entry-#{entry.id}" do %>
-  <div class="<%= cycle('left-entry all_entries','right-entry all_entries') %>">
-    
-    <strong class=""><%= link_to entry.title, entry_path(entry), "data-toggle" => "modal", 'data-target' => "#show_modal", remote: :true %></strong><br>
-    <em><%= entry.date.strftime("%B %e, %Y") %></em>
-    <div><%= entry.body %></div>
-    
-    <div><%= render partial: 'entries/buttons', locals: { entry: entry } %></div>
-    
-  </div>
-<%# end %>
+<div class="<%= cycle('left-entry all_entries','right-entry all_entries') %>">
+  
+  <strong class=""><%= link_to entry.title, entry_path(entry), "data-toggle" => "modal", 'data-target' => "#show_modal", remote: :true %></strong><br>
+  <em><%= entry.date.strftime("%B %e, %Y") %></em>
+  <div><%= entry.body %></div>
+  
+  <div><%= render partial: 'entries/buttons', locals: { entry: entry } %></div>
+  
+</div>

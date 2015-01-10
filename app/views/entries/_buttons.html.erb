@@ -1,9 +1,1 @@
-<% if current_user %>
-  <%= link_to edit_entry_path(entry), "data-toggle" => "modal", 'data-target' => "#entry_modal", 'data-dismiss' => "modal", remote: :true do %>
-    <span class="glyphicon glyphicon-pencil edit-icon" aria-hidden="true" aria-label="Edit" ></span>
-  <% end %>
-
-  <%= link_to entry_path(entry), method: :delete, data: {confirm: "Are you sure?"} do %>
-    <span class="glyphicon glyphicon-trash" aria-hidden="true" aria-label="Delete"></span>
-  <% end %>
-<% end %>
+<% if current_user %><a href='entries/<%= entry.id %>/edit' action='edit' controller='entries' id='<%= entry.id %>' data-remote='true' data-toggle='modal' data-target='#entry_modal' data-dismiss='modal'><span class='glyphicon glyphicon-pencil edit-icon' aria-hidden='true' aria-label='Edit'></span></a><a href='/entries/<%= entry.id %>' action='destroy' controller='entries' id='<%= entry.id %>' data-method='delete' data-confirm='Are you sure?'> <span class='glyphicon glyphicon-trash' aria-hidden='true' aria-label='Delete'></span></a><% end %>

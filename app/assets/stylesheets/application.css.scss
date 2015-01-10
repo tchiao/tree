@@ -18,7 +18,7 @@
 
 body {
 	background-color:#fffefb;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Helvetica';
 	font-weight:300;
   color:#72716e;
 }
@@ -286,16 +286,20 @@ a:hover, a:focus {
   text-decoration:none;
 }
 
+.glyphicon {
+  color: #9eb767;
+}
+
 .add-entry-row {
   margin-top:-25px;
   margin-bottom:5px;
 }
 
-.left-entry .edit-icon {
+.left-entry  {
   margin-right:5px;
 }
 
-.right-entry .edit-icon {
+.right-entry {
   margin-right:5px;
 }
 
