@@ -4,7 +4,7 @@
     <%= form_tag entries_path, method: 'get', id: 'keyword-search' do %>
       <%= text_field_tag :keyword_search, params[:keyword_search], class: 'search-field', placeholder: 'What are you looking for?' %>
       <% end %>
-    <%#= link_to "Search by date", "#", class: 'date-search-link pull-right' %>
+    <%= link_to "Search by date", "#", class: 'date-search-link pull-right' %>
   </div>
 
   <div class='pull-right date-search-section' style="display: none">
@@ -62,10 +62,8 @@
     </div>
   </div>
 
-<div id="timeline-embed"></div>
-<script type="text/javascript" src="https://s3.amazonaws.com/cdn.knightlab.com/libs/timeline/latest/js/storyjs-embed.js"></script>
-
-<%= javascript_include_tag "timeline", "search" %>
+  <%= javascript_include_tag "timeline", "search" %>
+  <div id="timeline-embed"></div>
 
 </div>
 

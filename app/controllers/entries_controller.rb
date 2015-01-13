@@ -11,7 +11,6 @@ class EntriesController < ApplicationController
 		@entry = Entry.new
 		respond_to do |format|
       format.html
-      format.js
       format.json { render :index }
     end
 	end

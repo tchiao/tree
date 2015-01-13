@@ -1,10 +1,30 @@
 $(document).ready(function(){
   $("#keyword-search").keyup(function(){
-    $.get(this.action, $(this).serialize(), null, 'script');
+    $("#timeline-embed").html("")
+
+    createStoryJS({
+      type:       'timeline',
+      width:      '100%',
+      height:     '600',
+      source:     "/entries.json?" + $(this).serialize(),
+      embed_id:   'timeline-embed',
+      css:        '/assets/timeline-new.css',
+      js:         'https://s3.amazonaws.com/cdn.knightlab.com/libs/timeline/latest/js/timeline.js'
+    });
   });
 
   $("#date-search").keyup(function(){
-    $.get(this.action, $(this).serialize(), null, 'script');
+    $("#timeline-embed").html("")
+
+    createStoryJS({
+      type:       'timeline',
+      width:      '100%',
+      height:     '600',
+      source:     "/entries.json?" + $(this).serialize(),
+      embed_id:   'timeline-embed',
+      css:        '/assets/timeline-new.css',
+      js:         'https://s3.amazonaws.com/cdn.knightlab.com/libs/timeline/latest/js/timeline.js'
+    });
   });
 
   $("a.date-search-link").click(function(e) {
