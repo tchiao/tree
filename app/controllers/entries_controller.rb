@@ -1,5 +1,4 @@
 class EntriesController < ApplicationController
-	before_filter :disable_nav, only: [:new, :edit]
 	respond_to :html, :js, :json
 
 	def index

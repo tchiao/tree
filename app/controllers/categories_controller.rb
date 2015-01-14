@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-	before_filter :disable_nav, only: [:index]
 
 	def index
 		@categories = Category.all

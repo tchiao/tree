@@ -36,7 +36,7 @@ class Scraper
     body = self.class.get_body(@doc)
     category_list = self.class.get_categories(@doc, @url)
 
-    @results = { title: title , month: date[0], day: date[1], year: date[2], location: location, body: body, category_list: category_list}
+    @results = { title: title, month: date[0], day: date[1], year: date[2], location: location, body: body, category_list: category_list}
   end
 
   class << self

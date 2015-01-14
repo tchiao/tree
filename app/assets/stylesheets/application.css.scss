@@ -17,7 +17,7 @@
 @import "bootstrap";
 
 body {
-	background-color:#fffefb;
+	background-color:#fcfbf8;
 	font-family: 'Helvetica';
 	font-weight:300;
   color:#72716e;
@@ -434,31 +434,3 @@ li.select2-result:first-child {
 .date-text {
   margin:0 1px 0px 5px
 }
-
-#cd-timeline {
-  position: relative;
-  padding: 50px;
-  margin:0 auto;
-}
-
-#cd-timeline::before {
-  content: '';
-  top:0px;
-  bottom:100px;
-  left:50%;
-  position: absolute;
-  width:6px;
-  background-color:#8b5e30;
-}
-
-.timeline-dots {
-  position:absolute;
-  left:50%;
-  margin-left:-12px;
-  height:30px;
-  width:30px;
-  border-radius:30px;
-  background-color:#795c3e;
-  border-bottom:5px solid #513c26;
-}
-
