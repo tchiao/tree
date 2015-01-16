@@ -10,7 +10,7 @@
           "startDate": "<%= entry.date.to_s.gsub('-', ',') %>",
           "endDate": "<%= entry.date.to_s.gsub('-', ',') %>",
           "headline": "<%= entry.title %>",
-          "text":"<p>In <%= entry.location %></p><p><%= entry.body %></p><p><%= render :partial => '/entries/buttons.html.erb', locals: {entry: entry} %></p>",
+          "text":"<%= render :partial => '/entries/buttons.html.erb', locals: {entry: entry} %><p>In <%= entry.location %></p><p><%= entry.body %></p>",
           "classname": "<%= 'timeline-entry' + (entry.id).to_s %>" 
 
         } <%= "," unless entry == @entries.last %>

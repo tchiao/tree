@@ -10,7 +10,7 @@ $(document).ready(function(){
   $("#keyword-search").keyup(function(){
     delay(function(){
       $("#timeline-embed").html("")
-
+      
       createStoryJS({
         type:       'timeline',
         width:      '100%',
@@ -25,9 +25,8 @@ $(document).ready(function(){
 
   $("#date-search").keyup(function(){
     delay(function(){
-
       $("#timeline-embed").html("")
-
+      
       createStoryJS({
         type:       'timeline',
         width:      '100%',

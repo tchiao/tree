@@ -17,7 +17,7 @@
 @import "bootstrap";
 
 body {
-	background-color:#fcfbf8;
+	background-color:#f2f1ed;
 	font-family: 'Helvetica';
 	font-weight:300;
   color:#72716e;
@@ -28,17 +28,17 @@ body {
 }
 
 h2, h3, h4 {
-	color:#6c8b29;
+	color:#6c8022;
 	font-weight:700;
 }
 
 a {
-	color:#6c8b29;
+	color:#6c8022;
 	text-decoration:none;
 }
 
 a:hover {
-	color:#6c8b29;
+	color:#6c8022;
 	text-decoration:underline;
 }
 
@@ -119,21 +119,21 @@ a:hover {
 }
 
 .alert-notice {
-  background-color:#bcc87c;
-  border-bottom:5px solid #a9b667;
+  background-color:#b1cc66;
+  border-bottom:5px solid #9cba4a;
 }
 
 .alert-error, .alert-alert {
-	background-color:#d9e276;
-  border-bottom:5px solid #cbd378;
+	background-color:#e09767;
+  border-bottom:5px solid #d37f47;
 }
 
 a:hover, a:focus {
-	color:#6c8b29;
+	color:#6c8022;
 }
 
 .nav > li > a:hover, .nav > li > a:focus, .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-	background-color:#fffefb;
+	background-color:#f2f1ed;
 }
 
 .dropdown-menu {
@@ -141,7 +141,7 @@ a:hover, a:focus {
 }
 
 .dropdown-menu > li > a {
-	color:#6c8b29;
+	color:#6c8022;
 }
 
 .chat-bubble-arrow-border {
@@ -179,7 +179,7 @@ a:hover, a:focus {
 
 .url-field {
   margin-top:7px;
-  border-bottom:5px solid #cbd378;
+  border-bottom:5px solid #b1cc66;
 }
 
 .form-body {
@@ -190,15 +190,15 @@ a:hover, a:focus {
 .button {
   padding:10px 15px;
   color:#fffefb;
-  border:1px solid #bad08b;
-  background-color:#bad08b;
+  border:1px solid #b1cc66;
+  background-color:#b1cc66;
   font-weight:700;
   outline:none;
 }
 
 .button:hover {
-  border:1px solid #bcc87c;
-  background-color: #bcc87c;
+  border:1px solid #9cba4a;
+  background-color: #9cba4a;
 }
 
 .cancel-button {
@@ -217,7 +217,7 @@ a:hover, a:focus {
 }
 
 .form-box {
-  background-color:#eceae2;
+  background-color:#e8e6de;
   padding:25px 30px 25px 30px;
   width:30%;
   margin:0 auto;
@@ -228,7 +228,7 @@ a:hover, a:focus {
 
 .act-form-box {
   width:60%;
-  background-color:#eceae2;
+  background-color:#e8e6de;
   padding:25px 35px 25px 30px;
   margin-top:20px;
   margin-bottom:20px;
@@ -269,7 +269,7 @@ a:hover, a:focus {
 }
 
 .modal-form {
-  background-color:#eceae2;
+  background-color:#e8e6de;
   padding:25px 30px 25px 30px;
   margin-top:20px;
   margin-bottom:10px;
@@ -277,7 +277,7 @@ a:hover, a:focus {
 }
 
 .add-entry-icon {
-  color:#9eb767;
+  color:#8aa443;
   font-size: 60px;
   margin-left:100px;
 }
@@ -287,7 +287,21 @@ a:hover, a:focus {
 }
 
 .glyphicon {
-  color: #9eb767;
+  color: #8aa443;
+  font-size:12px;
+}
+
+.glyphicon:hover {
+  color: #6c8022;
+  text-decoration:none;
+}
+
+.glyphicons {
+  margin-top:-15px;
+}
+
+.glyphicon-trash {
+  margin-left:5px;
 }
 
 .add-entry-row {
@@ -301,10 +315,6 @@ a:hover, a:focus {
 
 .right-entry {
   margin-right:5px;
-}
-
-.glyphicon {
-  margin-top:5px;
 }
 
 .select2-container-multi .select2-choices {
@@ -355,8 +365,8 @@ a:hover, a:focus {
   font-size:14px;
   padding:7px 10px;
   color:#72716e;
-  background:#eceae2;
-  border:0;
+  background:white;
+  border:1px solid #eeede7;
 }
 
 .search-field:focus {
@@ -364,7 +374,7 @@ a:hover, a:focus {
 }
 
 .select2-no-results {
-    display: none !important;
+  display: none !important;
 }
 
 ul.select2-results {
@@ -403,15 +413,15 @@ li.select2-result:first-child {
   width:135px;
   font-size:14px;
   color:#72716e;
-  background:#eceae2;
+  background:white;
   padding:11px 0px 12px 0px;
-  border:0;
+  border:1px solid #eeede7;
 }
 
 .date-search-box input { 
   text-align:center;
   border: none; 
-  background:#eceae2;
+  background:white;
 }
 
 .date-search-box input#date1-month, input#date2-month {

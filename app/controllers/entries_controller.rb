@@ -7,11 +7,25 @@ class EntriesController < ApplicationController
 		else
 			@entries = Entry.date_search(params[:start_date], params[:end_date])
 		end
+
+		if @entries == []
+			@error_entry = Entry.create!(
+  			title: "Sorry, that search didn't turn up any events!",
+  			date: Date.today,
+  			location: "limbo",
+  			body: "Try again with another keyword or date range."
+			)
+			@entries = [@error_entry]
+		end
+
 		@entry = Entry.new
 		respond_to do |format|
       format.html
       format.json { render :index }
     end
+		if @error_entry != nil
+			@error_entry.destroy
+		end
 	end
 
 	def show

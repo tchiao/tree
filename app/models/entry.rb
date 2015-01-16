@@ -65,8 +65,8 @@ class Entry < ActiveRecord::Base
 			end
 		end
 
-		date1 = Date.new start_year, start_month, start_day
-		date2 = Date.new end_year, end_month, end_day 
+		date1 = Date.new start_year, start_month, start_day rescue nil
+		date2 = Date.new end_year, end_month, end_day rescue nil
 
 		where('date BETWEEN ? AND ?', "#{date1}", "#{date2}")
 	end
