@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="act-form-box">
+      <%= render partial: 'form2', locals: { entry: @entry } %>
+    </div>
+  </div>
+</div>
+
+<script>
+  <%= render partial: 'validation.js' %>
+  <%= render partial: 'autopopulate.js' %>
+</script>

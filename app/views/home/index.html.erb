@@ -1,0 +1,14 @@
+<body class="home">
+
+  <div class="home-div">
+    <div class="search-bar"></div>
+
+      <%= form_tag entries_path, method: 'get', id: 'home-search' do %>
+        <div class="home-text">What does history look like to you?</div>
+        <%= text_field_tag :keyword_search, params[:keyword_search], class: 'search-field search-home', placeholder: 'I\'m looking for...' %>
+        <%= submit_tag "Search", class: 'search-button button', :name => nil %>
+        <p><div class="small-text">Or <%= link_to "start reading...", entries_path, class: 'link-small' %></div></p>
+      <% end %>
+
+    </div>
+</body>

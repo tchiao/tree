@@ -82,7 +82,7 @@ a:hover {
 	padding:20px 25px 25px 25px;
 	color:#fffefb;
 	margin:20px 0 20px 0;
-	background-color:#eceae2;
+	background-color:#e8e6de;
 	border-radius:0 50px 50px 50px;
 	border-bottom:5px solid #d4d3cd;
 }
@@ -108,7 +108,7 @@ a:hover {
 }
 
 .alert {
-  margin:auto;
+  margin:0 auto;
   width:50%;
   position:relative;
   padding:10px;
@@ -210,6 +210,28 @@ a:hover, a:focus {
 .cancel-button:hover {
   border:1px solid #72716e;
   background-color:#72716e;
+}
+
+.search-button {
+  margin-left:-4px;
+  border:1px solid #b86f3f;
+  background-color:#b86f3f;
+  font-size:13px;
+  padding:9px 15px;
+}
+
+.search-button:hover {
+  border:1px solid #b86f3f;
+  background-color:#bd7240;
+}
+
+.link-button {
+  padding:12px 17px;
+}
+
+.link-button:hover, .link-button a, .link-button a:hover {
+  color:#fffefb;
+  text-decoration:none;
 }
 
 .login-link {
@@ -444,3 +466,85 @@ li.select2-result:first-child {
 .date-text {
   margin:0 1px 0px 5px
 }
+
+.home {
+  background-image: image-url('bg.png');
+  background-repeat:no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.home-div {
+  position:absolute;
+  top: 35%;
+  height:270px;
+  width:390px;
+  left:0;
+  right:0;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.search-bar {
+  position:absolute;
+  top: 0;
+  height:270px;
+  background-color:#d37f47;
+  width:390px;
+  opacity:0.93;
+  left:0;
+  right:0;
+  margin-left:auto;
+  margin-right:auto;
+  border-radius:1px;
+}
+
+#home-search {
+  width:390px;
+  position:absolute;
+  top: 65px;
+  left:0;
+  right:0;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+}
+
+.search-home {
+ height:38px;
+ width:220px;
+}
+
+.timeline-headline {
+  position:absolute;
+  top:0px;
+  height:600px;
+  width:100%;
+  background-color:#f2f1ed;
+  z-index: -1;
+}
+
+.home-text {
+  font-size:35px;
+  color:#f2f1ed;
+  padding:0 50px 25px 50px;
+  line-height: 115%;
+}
+
+.scraper-loading {
+  width:28px;
+  height:28px;
+  background:url('select2-spinner.gif') no-repeat;
+}
+
+.small-text {
+  color:#f2f1ed;
+}
+
+.small-text > .link-small, .small-text > .link-small:hover, .small-text > .link-small a, .small-text > .link-small:hover a, .small-text > .link-small a:hover {
+  font-weight:bold;
+  color:#f2f1ed;
+}
+

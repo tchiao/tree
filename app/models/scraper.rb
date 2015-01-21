@@ -29,9 +29,7 @@ class Scraper
 
   def scrape
     title = self.class.get_title(@doc, @url)
-
     date = self.class.get_date(@doc)
-
     location = self.class.get_location(@doc, @url)
     body = self.class.get_body(@doc)
     category_list = self.class.get_categories(@doc, @url)

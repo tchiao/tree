@@ -6,18 +6,21 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  
-  <script type="text/javascript" src="https://s3.amazonaws.com/cdn.knightlab.com/libs/timeline/latest/js/timeline.js"></script> 
-  <script type="text/javascript" src="https://s3.amazonaws.com/cdn.knightlab.com/libs/timeline/latest/js/storyjs-embed.js"></script>
-  <%= favicon_link_tag 'favicon.ico' %>
-  
+  <%= favicon_link_tag 'fav.ico' %>
+
 </head>
 
 <body>
   <div class="container">
   	<div class="header">
-      <%= link_to(root_path) do %>
-        <%= image_tag("tree_logo.png", height: "50") %>
+      <% if @home_page %>
+        <%= link_to(entries_path) do %>
+          <%= image_tag("full_logo.png", height: "30") %>
+        <% end %>
+      <% else %>
+        <%= link_to(entries_path) do %>
+          <%= image_tag("tree_logo.png", height: "45") %>
+        <% end %>
       <% end %>
 
       <div class="pull-right">
@@ -43,7 +46,7 @@
           <%= link_to "Sign In", new_user_session_path, class: 'login-link' %> or <%= link_to "Sign Up", new_user_registration_path, class: 'login-link' %>
         <% end %>
       </div>
-  	</div>
+  	</div></br>
 
     <div id="flash-container">
       <% if flash[:notice] %>
@@ -55,10 +58,9 @@
       <% end %>
     </div>
 
-    <br/>
-    
+   <br/>
+    </div>
     <div><%= yield %></div>
-  </div>
 </body>
 
 
