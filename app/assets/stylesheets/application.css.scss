@@ -109,8 +109,10 @@ a:hover {
 
 .alert {
   margin:0 auto;
-  width:50%;
-  position:relative;
+  left:0;
+  right:0;
+  width:42%;
+  position:absolute;
   padding:10px;
   color:#fffefb;
   text-align:center;
@@ -173,7 +175,7 @@ a:hover, a:focus {
 .form-field {
   width:100%;
   font-size:15px;
-  padding:7px 10px;
+  padding:6px 10px;
   color:#72716e;
   background:white;
   border:0;
@@ -206,7 +208,6 @@ a:hover, a:focus {
 }
 
 .cancel-button {
-  margin-top:5px;
   border:1px solid #d4d3cd;
   background-color:#d4d3cd;
 }
@@ -266,10 +267,11 @@ a:hover, a:focus {
   font-size:15px;
   color:#72716e;
   background:white;
-  padding:6px 0px;
+  padding:5px 0px;
   border:0;
   border-bottom:5px solid #d4d3cd;
   border-radius:3px;
+  margin-top:-10px;
 }
 
 .datefield input { 
@@ -296,9 +298,7 @@ a:hover, a:focus {
 
 .modal-form {
   background-color:#e8e6de;
-  padding:25px 30px 25px 30px;
-  margin-top:20px;
-  margin-bottom:10px;
+  padding:15px 30px 5px 30px;
   border-radius:5px;
 }
 
@@ -328,11 +328,6 @@ a:hover, a:focus {
 
 .glyphicon-trash {
   margin-left:5px;
-}
-
-.add-entry-row {
-  margin-top:-25px;
-  margin-bottom:5px;
 }
 
 .left-entry  {
@@ -421,7 +416,7 @@ li.select2-result:first-child {
   margin-top: 4px !important;
 }
 
-.date-search-link, {
+.date-search-link {
   margin-top:5px;
   font-size:small;
 }
@@ -538,9 +533,8 @@ li.select2-result:first-child {
 }
 
 .scraper-loading {
-  width:28px;
-  height:28px;
-  background:url('select2-spinner.gif') no-repeat;
+  height:20px;
+  margin-top:-9px
 }
 
 .small-text {

@@ -4,7 +4,7 @@
     <%= f.text_field :url, class: "form-field url-field", placeholder: "Enter URL of event" %>
   </p>
 
-  <div class="scraper-loading" style="display: none"></div>
+  <div class="scraper-loading" style="display: none"><%= image_tag("loading-dots.gif", height: "5") %></div>
 
   <p>
   	<button type="button" class="cancel-button button" id="scrape-button">Scrape</button>

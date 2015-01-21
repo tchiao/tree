@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>History Tree</title>
+  <title>Treeline</title>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -51,7 +51,7 @@
           <%= link_to "Sign In", new_user_session_path, class: 'login-link' %> or <%= link_to "Sign Up", new_user_registration_path, class: 'login-link' %>
         <% end %>
       </div></div>
-  	</div></br>
+  	</div>
 
     <div id="flash-container">
       <% if flash[:notice] %>
@@ -63,7 +63,7 @@
       <% end %>
     </div>
 
-   <br/>
+   
     </div>
     <div><%= yield %></div>
 </body>

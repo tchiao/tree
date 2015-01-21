@@ -26,15 +26,11 @@
        </span>
       <% end %><br/>
       <%= link_to "Search by keyword", "#", class: 'keyword-search-link pull-right' %>
-    </div>
+    </div><br/>
 
-    <br/><br/>
+   
     <% if current_user %>
-    <div class='add-entry-row'>
       <%= link_to '⊕', new_entry_path, class: 'add-entry-icon', "data-toggle" => "modal", 'data-target' => "#entry_modal", remote: :true %>
-    </div>
-    <% else %>
-    <br/><br/><br/>
     <% end %>
 
     <div class="modal fade" id="entry_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -70,6 +66,4 @@
   <div id="timeline-embed"></div>
   <%= javascript_include_tag "/storyjs-embed.js" %>
   <%= javascript_include_tag "/timeline-js", "search" %>
-
-<br/>
 

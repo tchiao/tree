@@ -12,7 +12,7 @@
     createStoryJS({
       type:               'timeline',
       width:              '100%',
-      height:             '600',
+      height:             '575',
       source:             "/entries.json?" + $(this).serialize(),
       embed_id:           'timeline-embed',
       start_at_slide:     '<%= @entries.map {|e| e.id }.index(@entry.id) %>',
