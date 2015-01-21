@@ -2,6 +2,7 @@ class EntriesController < ApplicationController
 	respond_to :html, :js, :json
 
 	def index
+		@grey_bg = true
 		if params[:keyword_search]
 			@entries = Entry.keyword_search(params[:keyword_search])
 		else

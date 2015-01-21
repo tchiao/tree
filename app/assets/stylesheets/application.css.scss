@@ -17,7 +17,7 @@
 @import "bootstrap";
 
 body {
-	background-color:#f2f1ed;
+	background-color:#fcfcfc;
 	font-family: 'Helvetica';
 	font-weight:300;
   color:#72716e;
@@ -133,7 +133,11 @@ a:hover, a:focus {
 }
 
 .nav > li > a:hover, .nav > li > a:focus, .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-	background-color:#f2f1ed;
+	background-color:#fcfcfc;
+}
+
+.grey-bg > .nav > li > a:hover, .grey-bg > .nav > li > a:focus, .grey-bg > .nav .open > a, .grey-bg > .nav .open > a:hover, .grey-bg > .nav .open > a:focus {
+  background-color:#f2f1ed;
 }
 
 .dropdown-menu {
@@ -493,12 +497,12 @@ li.select2-result:first-child {
   height:270px;
   background-color:#d37f47;
   width:390px;
-  opacity:0.93;
   left:0;
   right:0;
   margin-left:auto;
   margin-right:auto;
   border-radius:1px;
+  border-bottom:6px solid #b86f3f;
 }
 
 #home-search {
@@ -548,3 +552,11 @@ li.select2-result:first-child {
   color:#f2f1ed;
 }
 
+.error {
+  background-image: image-url('tree-error.png');
+  background-repeat:no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
