@@ -152,10 +152,6 @@ class Scraper
             body = p.text.gsub("\"", "'").gsub(/\[(.*?)\]/, "").gsub("\u0094", "'").gsub("\u0093", "'").gsub("  ", " ").strip
             return body
           end
-
-          if body == nil
-            body = p.text.gsub("\"", "'").gsub(/\[(.*?)\]/, "").gsub("\n", " ").gsub("  ", " ").strip
-          end
         end
       end
       return body
