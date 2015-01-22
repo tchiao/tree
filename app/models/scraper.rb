@@ -148,9 +148,13 @@ class Scraper
     def get_body(doc)
       for p in doc.css('p')
         if p.text.size > 250
-          unless (p.text.strip.include?("\n"))
+          if ( p.text.strip.scan(/\n/).count < 3 )
             body = p.text.gsub("\"", "'").gsub(/\[(.*?)\]/, "").gsub("\u0094", "'").gsub("\u0093", "'").gsub("  ", " ").strip
             return body
+          end
+
+          if body == nil
+            body = p.text.gsub("\"", "'").gsub(/\[(.*?)\]/, "").gsub("\n", " ").gsub("  ", " ").strip
           end
         end
       end
