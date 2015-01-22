@@ -31,8 +31,8 @@ class Scraper
   def scrape
     title = self.class.get_title(@doc, @url)
     date = self.class.get_date(@doc)
-    body = self.class.get_body(@doc)
     location = self.class.get_location(@doc, @url)
+    body = self.class.get_body(@doc)
     category_list = self.class.get_categories(@doc, @url)
 
     @results = { title: title, month: date[0], day: date[1], year: date[2], location: location, body: body, category_list: category_list}
@@ -128,23 +128,6 @@ class Scraper
       return date
     end
 
-    # Find first paragraph that has a length > 250 and no line breaks (indicating list)
-    def get_body(doc)
-      for p in doc.css('p')
-        if p.text.size > 250
-          if ( p.text.scan(/\n/).count < 4 )
-            body = p.text.gsub("\"", "'").gsub(/\[(.*?)\]/, "").gsub("\u0094", "'").gsub("\u0093", "'").gsub("  ", " ").strip
-            return body
-          end
-
-          if body == nil
-            body = p.text.gsub("\"", "'").gsub(/\[(.*?)\]/, "").gsub("\n", " ").gsub("  ", " ").strip
-          end
-        end
-      end
-      return body
-    end
-
     # Only applicable to certain Wikipedia articles for now
     def get_location(doc, url)
       if wiki_box?(doc)
@@ -161,6 +144,22 @@ class Scraper
       end
     end
 
+    # Find first paragraph that has a length > 250 and no line breaks (indicating list)
+    def get_body(doc)
+      for p in doc.css('p')
+        if p.text.size > 250
+          unless (p.text.strip.include?("\n"))
+            body = p.text.gsub("\"", "'").gsub(/\[(.*?)\]/, "").gsub("\u0094", "'").gsub("\u0093", "'").gsub("  ", " ").strip
+            return body
+          end
+
+          if body == nil
+            body = p.text.gsub("\"", "'").gsub(/\[(.*?)\]/, "").gsub("\n", " ").gsub("  ", " ").strip
+          end
+        end
+      end
+      return body
+    end
 
     # Return 4 categories total: 2 multi-length proper nouns and 2 common nouns. Remove common words (case insensitive)
     # already in proper nouns, of length 1, common words, numbers, symbols.

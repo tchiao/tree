@@ -74,8 +74,6 @@ GEM
       railties (>= 3.0.0)
     figaro (1.0.0)
       thor (~> 0.14)
-    font_assets (0.1.11)
-      rack
     hike (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -231,7 +229,6 @@ DEPENDENCIES
   devise
   factory_girl_rails (~> 4.0)
   figaro
-  font_assets
   httparty
   jbuilder (~> 2.0)
   jquery-rails
