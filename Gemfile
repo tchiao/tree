@@ -40,4 +40,4 @@ gem 'quiet_assets'
 gem 'nokogiri'
 gem 'httparty'
 gem 'mechanize'
-
+gem 'newrelic_rpm'
