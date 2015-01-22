@@ -455,12 +455,13 @@ li.select2-result:first-child {
 }
 
 .home {
-  background-image: image-url('bg.png');
+  background-image: image-url('bg-home.png');
   background-repeat:no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  -webkit-background-size: 85%;
+  -moz-background-size: 85%;
+  -o-background-size: 85%;
+  background-size: 85%;
+  background-position: right 55px;
 }
 
 .home-div {
@@ -532,13 +533,4 @@ li.select2-result:first-child {
 .small-text > .link-small, .small-text > .link-small:hover, .small-text > .link-small a, .small-text > .link-small:hover a, .small-text > .link-small a:hover {
   font-weight:bold;
   color:#f2f1ed;
-}
-
-.error {
-  background-image: image-url('tree-error.png');
-  background-repeat:no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
 }
