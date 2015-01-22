@@ -6,6 +6,7 @@ group :production do
   gem 'pg'
   gem 'rails_12factor'    
   gem 'unicorn'
+  gem 'heroku_rails_deflate'
 end
 
 group :development do
@@ -39,3 +40,4 @@ gem 'quiet_assets'
 gem 'nokogiri'
 gem 'httparty'
 gem 'mechanize'
+
