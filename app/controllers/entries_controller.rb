@@ -9,6 +9,7 @@ class EntriesController < ApplicationController
 			@entries = Entry.date_search(params[:start_date], params[:end_date])
 		end
 
+		# If search returns no results, create temporary entry saying as much 
 		if @entries == []
 			Struct.new("Entry", :title, :date, :location, :body, :id)
 			@error_entry = Struct::Entry.new("Sorry, that search didn't turn up any events!", Date.today, "limbo", "Try again with another keyword or date range.", -1)
@@ -27,7 +28,6 @@ class EntriesController < ApplicationController
 	end
 
 	def create
-		#@categories_params = params[:entry].delete(:category_list)
 		@entry = Entry.new(entry_params)
 		respond_to do |format|
 			if @entry.save

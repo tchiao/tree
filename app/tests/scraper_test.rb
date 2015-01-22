@@ -1,3 +1,6 @@
+# Tests to determine accuracy of scraper.rb. Comparison of scraper results versus the correct results, which 
+# are stored in the TestEntry model.
+
 def scrape_titles
   test_entries = TestEntry.all
   total = test_entries.length

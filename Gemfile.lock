@@ -74,10 +74,6 @@ GEM
       railties (>= 3.0.0)
     figaro (1.0.0)
       thor (~> 0.14)
-    heroku_rails_deflate (1.0.3)
-      actionpack (>= 3.2.13)
-      activesupport (>= 3.2.13)
-      rack (>= 1.4.5)
     hike (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -233,7 +229,6 @@ DEPENDENCIES
   devise
   factory_girl_rails (~> 4.0)
   figaro
-  heroku_rails_deflate
   httparty
   jbuilder (~> 2.0)
   jquery-rails

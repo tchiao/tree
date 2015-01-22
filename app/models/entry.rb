@@ -31,6 +31,8 @@ class Entry < ActiveRecord::Base
 	end
  
 	def self.date_search(start_date, end_date)
+		
+		# Default dates if any field left blank
 		start_month = 1
 		start_day = 1
 		if Entry.count != 0
@@ -43,6 +45,7 @@ class Entry < ActiveRecord::Base
 		end_month = 12
 		end_day = 31
 
+		# Prevent search completing until year filled out
 		if start_date && end_date
 			if start_date["(1i)"].length == 4
 				start_year = start_date["(1i)"].to_i
