@@ -12,8 +12,8 @@ class EntriesController < ApplicationController
 
 		# If search returns no results, create temporary entry saying as much 
 		if @entries == []
-			Struct.new("Entry", :title, :date, :location, :body, :id)
-			@error_entry = Struct::Entry.new("Sorry, that search didn't turn up any events!", Date.today, "limbo", "Try again with another keyword or date range.", -1)
+			Struct.new("Entry", :title, :date, :location, :body, :id, :user)
+			@error_entry = Struct::Entry.new("Sorry, that search didn't turn up any events!", Date.today, "limbo", "Try again with another keyword or date range.", -1, nil)
 			@entries = [@error_entry]
 		end
 

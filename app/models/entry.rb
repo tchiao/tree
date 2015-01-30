@@ -25,7 +25,7 @@ class Entry < ActiveRecord::Base
 
 	def self.keyword_search(search)
 		if search
-			where('title LIKE ? OR body LIKE ?', "%#{search}%", "%#{search}%") | joins(:categories).where('categories.name LIKE ?', "%#{search}%")
+			where('LOWER(title) LIKE ? OR LOWER(body) LIKE ?', "%#{search.downcase}%", "%#{search.downcase}%") | joins(:categories).where('LOWER(categories.name) LIKE ?', "%#{search.downcase}%")
 		else
 			Entry.all
 		end
