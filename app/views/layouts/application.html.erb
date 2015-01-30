@@ -11,61 +11,77 @@
 </head>
 
 <body>
-  <div class="container">
-  	<div class="header">
-      <% if @home_page %>
-        <%= link_to(entries_path) do %>
-          <%= image_tag("full_logo.png", height: "30") %>
-        <% end %>
-      <% else %>
-        <%= link_to(entries_path) do %>
-          <%= image_tag("tree_logo.png", height: "45") %>
-        <% end %>
-      <% end %>
-
-      <div class="pull-right">
-
-        <% if @grey_bg %>
-          <div class="grey-bg">
-        <% end %>
-        
-        <% if current_user %>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                <%= current_user.email %>
-                <span class="caret"></span>
-              </a>
-
-              <ul class="dropdown-menu" role="menu">
-                <li><%= link_to "Edit Account", edit_user_registration_path %></li>
-                <li class="divider"></li>
-                <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-                <div class="chat-bubble-arrow-border"></div>
-                <div class="chat-bubble-arrow"></div>
-              </ul>
-            </li>
-          </ul>
-
+  <div id="wrapper">
+    <div class="container">
+    	<div id="header">
+        <% if @home_page %>
+          <%= link_to(entries_path) do %>
+            <%= image_tag("full_logo.png", height: "30") %>
+          <% end %>
         <% else %>
-          <%= link_to "Sign In", new_user_session_path, class: 'login-link' %> or <%= link_to "Sign Up", new_user_registration_path, class: 'login-link' %>
+          <%= link_to(entries_path) do %>
+            <%= image_tag("tree_logo.png", height: "45") %>
+          <% end %>
         <% end %>
-      </div></div>
-  	</div>
 
-    <div id="flash-container">
-      <% if flash[:notice] %>
-        <div class="alert alert-notice"><%= flash[:notice] unless notice.blank? %></div>
-      <% elsif flash[:error] %>
-        <div class="alert alert-error"><%= flash[:error] unless error.blank? %></div>
-      <% elsif flash[:alert] %>
-        <div class="alert alert-alert"><%= flash[:alert] unless alert.blank? %></div>
+        <div class="pull-right">
+
+          <% if @grey_bg %>
+          <div class="grey-bg">
+          <% else %>
+          <div>
+          <% end %>
+          
+          <% if current_user %>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                  <%= current_user.email %>
+                  <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu" role="menu">
+                  <li><%= link_to "Edit Account", edit_user_registration_path %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+                  <div class="chat-bubble-arrow-border"></div>
+                  <div class="chat-bubble-arrow"></div>
+                </ul>
+              </li>
+            </ul>
+
+          <% else %>
+            <div class="login-box"><%= link_to "About", about_path, class: 'login-link' %></div>
+            <div class="login-box sign-in"><%= link_to "Sign In", new_user_session_path, class: 'login-link' %></div>
+            <div class="login-box sign-up"><%= link_to "Sign Up", new_user_registration_path, class: 'login-link' %></div>
+          <% end %>
+          </div>
+        </div>
+    	</div>
+
+
+      <div id="flash-container">
+        <% if flash[:notice] %>
+          <div class="alert alert-notice"><%= flash[:notice] unless notice.blank? %></div>
+        <% elsif flash[:error] %>
+          <div class="alert alert-error"><%= flash[:error] unless error.blank? %></div>
+        <% elsif flash[:alert] %>
+          <div class="alert alert-alert"><%= flash[:alert] unless alert.blank? %></div>
+        <% end %>
+      </div>
+    </div>
+     
+      <div id="content"><%= yield %></div>
+
+      <% unless @no_footer %>
+        <div id="footer">
+          <div class="footer-box"><%= link_to "about", about_path, class: 'footer-link' %></div>
+          <div class="footer-box"><%= link_to "contact", contact_path, class: 'footer-link' %></div>
+          <div class="footer-box"><%= link_to "sign in", new_user_session_path, class: 'footer-link' %></div>
+          <div class="footer-box"><%= link_to "sign up", new_user_registration_path, class: 'footer-link' %></div>
+        </div>
       <% end %>
     </div>
-
-   
-    </div>
-    <div><%= yield %></div>
 </body>
 
 

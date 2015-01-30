@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
 	respond_to :html, :js, :json
+	before_filter :no_footer
 
 	def index
 		@grey_bg = true
@@ -28,7 +29,8 @@ class EntriesController < ApplicationController
 	end
 
 	def create
-		@entry = Entry.new(entry_params)
+		@entry = current_user.entries.build(entry_params)
+		# Entry.new(entry_params)
 		respond_to do |format|
 			if @entry.save
 				@entries = Entry.all
@@ -77,6 +79,10 @@ class EntriesController < ApplicationController
 
 	def entry_params
 		params.require(:entry).permit(:title, :date, :location, :body, :category_list, :url)
+	end
+
+	def no_footer
+		@no_footer = true
 	end
 
 end

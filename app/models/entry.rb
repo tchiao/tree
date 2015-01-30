@@ -5,6 +5,7 @@ class Entry < ActiveRecord::Base
 	validates_presence_of :title, :date, :location, :body
 	validates_uniqueness_of :title
 	after_destroy :remove_empty_categories
+	belongs_to :user
 
 	def remove_empty_categories
 		categories.each do |category|
