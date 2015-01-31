@@ -613,3 +613,32 @@ p {
 h4 {
   text-align:center;
 }
+
+.timeline-tooltip, .tooltip {
+  z-index:2000 !important;
+}
+
+.timeline-tooltip.top .timeline-tooltip-arrow, .tooltip.top .tooltip-arrow {
+  border-top:5px solid #9cba4a !important;
+}
+
+.timeline-tooltip.left .timeline-tooltip-arrow, .tooltip.left .tooltip-arrow {
+  border-left:5px solid #9cba4a !important;
+}
+
+.timeline-tooltip.bottom .timeline-tooltip-arrow, .tooltip.bottom .tooltip-arrow {
+  border-bottom:5px solid #9cba4a !important;
+}
+
+.timeline-tooltip.right .timeline-tooltip-arrow, .tooltip.right .tooltip-arrow{
+  border-right:5px solid #9cba4a !important;
+}
+.timeline-tooltip-inner, .tooltip-inner {
+  background-color:#9cba4a !important;
+  padding:10px !important;
+}
+
+.glyphicon-question-sign {
+  font-size:15px;
+  margin-left:5px;
+}
