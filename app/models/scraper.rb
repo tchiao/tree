@@ -4,10 +4,11 @@ class Scraper
 
   COMMON_WORDS = %w(a about after ago all an and are as at back be because been before best but by can could day days did do down first for from get had has have he her him his hours how in into involving if is it its just like link me month months more most my nav new no not of on one only or our out pageAds people return said says see she so stories such that the they their them then this to told top typeof up upon var was we weeks went were what when where which who will with would you your) 
 
-  # Parse website with ad bypassing and exception handling 
+  # Parse website 
   def get_webpage(url)
     @url = url
     begin
+      # Bypass ads for Smithsonian website
       if @url.include?("smithsonianmag")
         page = Mechanize.new.get(@url)
         link = page.link_with(text: /Continue to our site/)
@@ -15,6 +16,8 @@ class Scraper
       else
         @response = HTTParty.get(@url).parsed_response
       end
+
+    # Exception handling
     rescue URI::InvalidURIError => e
       return "invalid_url"
     rescue Exception => e
@@ -40,6 +43,7 @@ class Scraper
 
   class << self
 
+    # Special methods for Wikipedia articles to determine title and whether the info box is present
     def wiki_url?(url)
       url.include?("wikipedia")
     end
@@ -60,7 +64,7 @@ class Scraper
       return title
     end
 
-    # Look for date in the following order: DD MM YYYY; MM DD, YYYY; MM YYYY; YYYY, MM DD
+    # Look for date in the following order: DD MM YYYY; MM DD YYYY; MM YYYY; YYYY, MM DD
     def get_date(doc)
       date_array = [nil, nil, nil]
       if wiki_box?(doc)
@@ -98,6 +102,7 @@ class Scraper
     end
 
     def get_date_mdy(text)
+      # 
       month_day_year = /(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t)?(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)[.]* (?:\d{1,2})[,\s]\s*(?:\d{4})/
       day_month_year = /(?:\d{1,2}) (?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t)(?:ember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)[.]* (?:\d{4})/
       date = text.scan(day_month_year).first
@@ -128,7 +133,7 @@ class Scraper
       return date
     end
 
-    # Only applicable to certain Wikipedia articles for now
+    # Only applicable to Wikipedia articles with the info box
     def get_location(doc, url)
       if wiki_box?(doc)
         location = doc.css(".location").text.gsub("\n", ",")

@@ -638,7 +638,21 @@ h4 {
   padding:10px !important;
 }
 
-.glyphicon-question-sign {
+.question-mark {
   font-size:15px;
   margin-left:5px;
+  background:#72716e;
+  color:white;
+  width:19px;
+  height:19px;
+  border-radius:10px;
+  display:inline-block;
+  text-align:center;
+  font-weight:bold;
+}
+
+.question-img {
+  width:20px;
+  height:20px;
+
 }
