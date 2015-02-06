@@ -5,13 +5,13 @@ $("#scrape-button").click(function(){
   $.post("/scraper", { url: $("#entry_url").val()}, function(data){
 
     myvar = data;
-    if (myvar == -1) {
+    if (myvar === "invalid_url") {
       $(".scraper-loading").hide();
       $("#entry_url").removeClass("error-border").addClass("error-border");
       $(".url-errors").remove();
       $("#entry_url").after("<div class='url-errors'>Sorry, that URL is invalid.</div>");
 
-    } else if (myvar == -2) {
+    } else if (myvar == "blank_url") {
       $(".scraper-loading").hide();
       $("#entry_url").removeClass("error-border").addClass("error-border");
       $(".url-errors").remove();

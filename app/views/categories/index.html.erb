@@ -10,9 +10,7 @@
 
         <% if current_user %>
   				<small>
-            <%= link_to category_path(category), method: :delete, data: {confirm: "Are you sure?"} do %>
-              <span class="glyphicon glyphicon-trash category-trash" aria-hidden="true" aria-label="Delete"></span>
-            <% end %>
+            <%= link_to "✖", category_path(category), method: :delete, data: {confirm: "Are you sure?"} %>
           </small>
         <% end %>
         

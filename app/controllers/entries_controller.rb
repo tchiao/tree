@@ -32,6 +32,7 @@ class EntriesController < ApplicationController
 		@entry = current_user.entries.build(entry_params)
 		respond_to do |format|
 			if @entry.save
+				assign_end_date
 				@entries = Entry.all
 				flash[:notice] = "'#{@entry.title}' created!"
 				format.html {redirect_to entries_path }
@@ -63,6 +64,7 @@ class EntriesController < ApplicationController
 		@entry = Entry.find(params[:id])
 		respond_to do |format|
 			if @entry.update(entry_params)
+				assign_end_date
 				@entries = Entry.all
 				flash[:notice] = "'#{@entry.title}' updated!"
 				format.html {redirect_to entries_path }
@@ -77,11 +79,17 @@ class EntriesController < ApplicationController
 	private
 
 	def entry_params
-		params.require(:entry).permit(:title, :date, :location, :body, :category_list, :url)
+		params.require(:entry).permit(:title, :date, :end_date, :location, :body, :category_list, :url)
 	end
 
 	def no_footer
 		@no_footer = true
+	end
+
+	def assign_end_date
+		if @entry.end_date == nil
+			@entry.update_attributes(end_date: @entry.date)
+		end
 	end
 
 end
