@@ -22,9 +22,9 @@ $("#scrape-button").click(function(){
       $("#entry_url").removeClass("error-border");
       $(".url-errors").remove();
       document.getElementById("entry_title").value = myvar["title"];
-      document.getElementById("month").value = myvar["month"];
-      document.getElementById("day").value = myvar["day"];
-      document.getElementById("year").value = myvar["year"];
+      document.getElementById("start_month").value = myvar["month"];
+      document.getElementById("start_day").value = myvar["day"];
+      document.getElementById("start_year").value = myvar["year"];
       document.getElementById("entry_location").value = myvar["location"];
       document.getElementById("entry_body").value = myvar["body"];
       $("#select2field").select2("val", myvar["category_list"]);

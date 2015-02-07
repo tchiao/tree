@@ -4,6 +4,8 @@
     <%= f.text_field :url, class: "form-field url-field", placeholder: "Enter URL of event" %>
   </p>
 
+  <div class="scraper-loading" style="display: none"><%= image_tag("loading-dots.gif", height: "5") %></div>
+
   <p>
     <button type="button" class="cancel-button button" id="scrape-button">Scrape</button> <span class="question-mark" data-toggle="tooltip" data-placement="right" title="Get the title, a summary, date, and categories straight from the URL!">?</span>
   </p>
@@ -16,13 +18,21 @@
   
   <p>
     <%= f.label :date, 'When' %><br/>
-    <div id="date1" class="datefield <%= error_border(entry.errors[:date]) %>">
-      <input id="month" class="date-field" name="entry[date(2i)]" maxlength="2" placeholder="MM" value="<%= current_date_val(entry.date.try(:month)) %>" data-autotab-format="number"/> /
-      <input id="day" class="date-field" name="entry[date(3i)]" maxlength="2" placeholder="DD" value="<%= current_date_val(entry.date.try(:day)) %>" data-autotab-format="number" /> /
-      <input id="year" class="date-field" name="entry[date(1i)]" maxlength="4" placeholder="YYYY" value="<%= current_date_val(entry.date.try(:year)) %>" data-autotab-format="number"/>
+    <div id="start_date" class="datefield <%= error_border(entry.errors[:date]) %>">
+      <input id="start_month" class="date-field" name="entry[date(2i)]" maxlength="2" placeholder="MM" value="<%= current_date_val(entry.date.try(:month)) %>" data-autotab-format="number"/> /
+      <input id="start_day" class="date-field" name="entry[date(3i)]" maxlength="2" placeholder="DD" value="<%= current_date_val(entry.date.try(:day)) %>" data-autotab-format="number" /> /
+      <input id="start_year" class="date-field" name="entry[date(1i)]" maxlength="4" placeholder="YYYY" value="<%= current_date_val(entry.date.try(:year)) %>" data-autotab-format="number"/>
+    </div> <span class="date-divide">-</span>
+
+    <div id="end_date" class="datefield <%= error_border(entry.errors[:end_date]) %>">
+      <input id="end_month" class="date-field" name="entry[end_date(2i)]" maxlength="2" placeholder="MM" value="<%= current_date_val(entry.end_date.try(:month)) %>" data-autotab-format="number"/> /
+      <input id="end_day" class="date-field" name="entry[end_date(3i)]" maxlength="2" placeholder="DD" value="<%= current_date_val(entry.end_date.try(:day)) %>" data-autotab-format="number" /> /
+      <input id="end_year" class="date-field" name="entry[end_date(1i)]" maxlength="4" placeholder="YYYY" value="<%= current_date_val(entry.end_date.try(:year)) %>" data-autotab-format="number"/>
     </div>
+    <br/>
     <span class="month-errors"></span><span class="day-errors"></span><span class="year-errors"></span>
     <%= error_message(entry.errors[:date], 'date') %>
+    <%= error_message(entry.errors[:end_date], 'end_date') %>
   </p>
 
   <p>

@@ -32,7 +32,7 @@ class EntriesController < ApplicationController
 		@entry = current_user.entries.build(entry_params)
 		respond_to do |format|
 			if @entry.save
-				assign_end_date
+				assign_end_date(@entry)
 				@entries = Entry.all
 				flash[:notice] = "'#{@entry.title}' created!"
 				format.html {redirect_to entries_path }
@@ -64,7 +64,7 @@ class EntriesController < ApplicationController
 		@entry = Entry.find(params[:id])
 		respond_to do |format|
 			if @entry.update(entry_params)
-				assign_end_date
+				assign_end_date(@entry)
 				@entries = Entry.all
 				flash[:notice] = "'#{@entry.title}' updated!"
 				format.html {redirect_to entries_path }
@@ -86,9 +86,10 @@ class EntriesController < ApplicationController
 		@no_footer = true
 	end
 
-	def assign_end_date
-		if @entry.end_date == nil
-			@entry.update_attributes(end_date: @entry.date)
+	def assign_end_date(entry)
+		if entry.end_date == nil
+			date = entry.date
+			entry.update_attributes(end_date: date)
 		end
 	end
 

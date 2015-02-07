@@ -11,64 +11,90 @@ function fieldPresent(id, div_class) {
   }
 }
 
-function validMonth() {
-  month_val = $('#month').val()
+function validMonth(id, id2, date) {
+  month_val = $(id).val()
+  month2_val = $(id2).val()
 
   if ((month_val >= 1 && month_val <= 12) || month_val == "") {
-    $(".month-errors").text("");
-    $("#month").removeClass("error-font")
-    $("#date1").removeClass("month-error-border")
+    if ((month2_val >= 1 && month2_val <= 12) || month2_val == "") {
+      $(".month-errors").text("")
+    }
+    $(id).removeClass("error-font")
+    $(date).removeClass("month-error-border")
   }
   else {
-    $("#month").addClass("error-font")
-    $("#date1").addClass("month-error-border")
+    $(id).addClass("error-font")
+    $(date).addClass("month-error-border")
     $(".month-errors").text("That month is invalid. ")
   }
 }
 
-function validDay(last_day) {
-  day_val = $('#day').val()
+function validDay(id, id2, date, last_day) {
+  day_val = $(id).val()
+  day_2val = $(id2).val()
   if ((day_val >= 1 && day_val <= last_day) || day_val == "") {
-    $(".day-errors").text("");
-    $("#day").removeClass("error-font")
-    $("#date1").removeClass("day-error-border")
+    if ((day_2val >= 1 && day_2val <= last_day) || day_2val == "") {
+      $(".day-errors").text("");
+    }
+    $(id).removeClass("error-font")
+    $(date).removeClass("day-error-border")
   }
   else {
-    $("#day").addClass("error-font")
-    $("#date1").addClass("day-error-border")
+    $(id).addClass("error-font")
+    $(date).addClass("day-error-border")
     $(".day-errors").text("That day is invalid. ")
   }
 }
 
-function validYear()  {
-  year_val = $('#year').val()
-  current_year = new Date().getFullYear()
+function validYear(id, id2, date)  {
+  year_val = $(id).val()
+  year2_val = $(id2).val()
+  current_year = new Date().getFullYear() + 100
   if ((year_val >= 1000 && year_val <= current_year) || year_val == "") {
-    $(".year-errors").text("");
-    $("#year").removeClass("error-font")
-    $("#date1").removeClass("year-error-border")
+    if ((year2_val >= 1000 && year2_val <= current_year) || year2_val == "") {
+      $(".year-errors").text("");
+    }
+    $(id).removeClass("error-font")
+    $(date).removeClass("year-error-border")
   }
   else {
-    $("#year").addClass("error-font")
-    $("#date1").addClass("year-error-border")
+    $(id).addClass("error-font")
+    $(date).addClass("year-error-border")
     $(".year-errors").text("That year is invalid. ")
   }
 }
 
-function validDate() {
-  month_val = $('#month').val()
+function validStartDate() {
+  month_val = $('#start_month').val()
   var month_group = ["1", "3", "5", "7", "8", "10", "12"];
-
-  validMonth();
-  validYear();
+  var date = "#start_date"
+  validMonth("#start_month", "#end_month", date);
+  validYear("#start_year", "#end_year", date);
   if(month_group.indexOf(month_val) > -1) {
-    validDay(31);
+    validDay("#start_day", "#end_day", date, 31);
   } else if (month_val == 4 || month_val == 6 || month_val == 9 || month_val == 11) {
-    validDay(30);
+    validDay("#start_day", "#end_day", date, 30);
   } else if (month_val == 2) {
-    validDay(29);
+    validDay("#start_day", "#end_day", date, 29);
   } else {
-    validDay(30);
+    validDay("#start_day", "#end_day", date, 30);
+  }
+}
+
+function validEndDate() {
+  month_val = $('#end_month').val()
+  var month_group = ["1", "3", "5", "7", "8", "10", "12"];
+  var date = "#end_date"
+  validMonth("#end_month", "#start_month", date);
+  validYear("#end_year", "#start_year", date);
+  if(month_group.indexOf(month_val) > -1) {
+    validDay("#end_day", "#start_day", date, 31);
+  } else if (month_val == 4 || month_val == 6 || month_val == 9 || month_val == 11) {
+    validDay("#end_day", "#start_day", date, 30);
+  } else if (month_val == 2) {
+    validDay("#end_day", "#start_day", date, 29);
+  } else {
+    validDay("#end_day", "#start_day", date, 30);
   }
 }
 
@@ -77,30 +103,54 @@ $("#entry_title").blur(function(){
   fieldPresent("#entry_title", "title-error-field")
 });
 
-// Presence of date
+// Presence of start date
 
-$(".datefield").change(function(){
-  month_val = $("#month").val()
-  day_val = $("#day").val()
-  year_val = $("#year").val()
+$("#start_date").change(function(){
+  month_val = $("#start_month").val()
+  day_val = $("#start_day").val()
+  year_val = $("#start_year").val()
   if ((month_val && day_val && year_val) != "") {
     $(".datefield").removeClass("error-border")
     $("div.date-error-field").remove();
   }
 });
 
-// Valid month/day
-
-$("#month").change(function(){
-  validDate();
+$("#end_date").change(function(){
+  month_val = $("#end_month").val()
+  day_val = $("#end_day").val()
+  year_val = $("#end_year").val()
+  if ((month_val && day_val && year_val) != "") {
+    $(".datefield").removeClass("error-border")
+    $("div.end_date-error-field").remove();
+  }
 });
 
-$("#day").change(function(){
-  validDate();
+// Valid start month/day/year
+
+$("#start_month").change(function(){
+  validStartDate();
 });
 
-$("#year").change(function(){
-  validDate();
+$("#start_day").change(function(){
+  validStartDate();
+});
+
+$("#start_year").change(function(){
+  validStartDate();
+});
+
+// Valid end month/day/year
+
+$("#end_month").change(function(){
+  validEndDate();
+});
+
+$("#end_day").change(function(){
+  validEndDate();
+});
+
+$("#end_year").change(function(){
+  validEndDate();
 });
 
 // Presence of location

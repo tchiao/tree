@@ -4,8 +4,15 @@ class Entry < ActiveRecord::Base
 	default_scope { order('date') }
 	validates_presence_of :title, :date, :location, :body
 	validates_uniqueness_of :title
+	validate :end_date_after_start
 	after_destroy :remove_empty_categories
 	belongs_to :user
+
+	def end_date_after_start
+		if end_date.present? && (end_date < date)
+			errors.add(:end_date, "end date must come after start date")
+		end
+	end
 
 	def remove_empty_categories
 		categories.each do |category|

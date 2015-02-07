@@ -333,6 +333,7 @@ background:#f2f1ed;
   border-bottom:5px solid #d4d3cd;
   border-radius:3px;
   margin-top:-10px;
+  display:inline-block;
 }
 
 .datefield input { 
@@ -340,21 +341,25 @@ background:#f2f1ed;
   border: none; 
 }
 
-.datefield input#month {
+.datefield input#start_month, .datefield input#end_month {
   width:35px;
   padding-left:6px;
 }
 
-.datefield input#day {
+.datefield input#start_day, .datefield input#end_day {
   width:25px;
 }
 
-.datefield input#year {
+.datefield input#start_year, .datefield input#end_year {
   width:43px;
 }
 
 .datefield input:focus {
   outline:none;
+}
+
+.date-divide {
+  margin:0 5px;
 }
 
 .modal-form {
@@ -398,7 +403,7 @@ background:#f2f1ed;
   font-weight:400;
 }
 
-.blank-error, .title-error-field, .location-error-field, .body-error-field, .date-error-field, .month-errors, .day-errors, .year-errors, .url-errors {
+.blank-error, .title-error-field, .location-error-field, .body-error-field, .date-error-field, .month-errors, .day-errors, .year-errors, .url-errors, .end_date-error-field {
   color:#cd6849;
   font-size:small;
 }
@@ -494,7 +499,7 @@ li.select2-result:first-child {
   background:white;
 }
 
-.date-search-box input#date1-month, input#date2-month {
+.date-search-box input#date1-month, input#date2-month,  {
   width:35px;
   padding-left:6px;
 }
